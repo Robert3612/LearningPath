@@ -1,15 +1,15 @@
 <?php
 
-namespace srag\DIC\Learningpath\DIC;
+namespace srag\DIC\LearningPath\DIC;
 
 use ILIAS\DI\Container;
-use srag\DIC\Learningpath\Database\DatabaseDetector;
-use srag\DIC\Learningpath\Database\DatabaseInterface;
+use srag\DIC\LearningPath\Database\DatabaseDetector;
+use srag\DIC\LearningPath\Database\DatabaseInterface;
 
 /**
  * Class AbstractDIC
  *
- * @package srag\DIC\Learningpath\DIC
+ * @package srag\DIC\LearningPath\DIC
  */
 abstract class AbstractDIC implements DICInterface
 {

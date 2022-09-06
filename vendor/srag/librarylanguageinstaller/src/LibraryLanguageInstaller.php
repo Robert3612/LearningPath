@@ -1,18 +1,18 @@
 <?php
 
-namespace srag\LibraryLanguageInstaller\Learningpath;
+namespace srag\LibraryLanguageInstaller\LearningPath;
 
 use ilDBConstants;
 use ilGlobalCache;
 use ilObjLanguage;
-use srag\DIC\Learningpath\DICTrait;
-use srag\DIC\Learningpath\Plugin\Pluginable;
-use srag\DIC\Learningpath\Plugin\PluginInterface;
+use srag\DIC\LearningPath\DICTrait;
+use srag\DIC\LearningPath\Plugin\Pluginable;
+use srag\DIC\LearningPath\Plugin\PluginInterface;
 
 /**
  * Class LibraryLanguageInstaller
  *
- * @package srag\LibraryLanguageInstaller\Learningpath
+ * @package srag\LibraryLanguageInstaller\LearningPath
  */
 final class LibraryLanguageInstaller implements Pluginable
 {

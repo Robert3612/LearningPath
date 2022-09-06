@@ -1,6 +1,6 @@
 <?php
 
-namespace srag\DIC\Learningpath\Plugin;
+namespace srag\DIC\LearningPath\Plugin;
 
 use Closure;
 use Exception;
@@ -8,14 +8,14 @@ use ilCtrlStructureReader;
 use ilLanguage;
 use ilObjComponentSettingsGUI;
 use ilPlugin;
-use srag\CustomInputGUIs\Learningpath\Template\Template;
-use srag\DIC\Learningpath\DICTrait;
-use srag\DIC\Learningpath\Exception\DICException;
+use srag\CustomInputGUIs\LearningPath\Template\Template;
+use srag\DIC\LearningPath\DICTrait;
+use srag\DIC\LearningPath\Exception\DICException;
 
 /**
  * Class Plugin
  *
- * @package srag\DIC\Learningpath\Plugin
+ * @package srag\DIC\LearningPath\Plugin
  */
 final class Plugin implements PluginInterface
 {

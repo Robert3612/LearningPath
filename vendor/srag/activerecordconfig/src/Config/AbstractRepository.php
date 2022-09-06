@@ -1,16 +1,16 @@
 <?php
 
-namespace srag\ActiveRecordConfig\Learningpath\Config;
+namespace srag\ActiveRecordConfig\LearningPath\Config;
 
 use ilDateTime;
 use ilDateTimeException;
 use LogicException;
-use srag\DIC\Learningpath\DICTrait;
+use srag\DIC\LearningPath\DICTrait;
 
 /**
  * Class AbstractRepository
  *
- * @package srag\ActiveRecordConfig\Learningpath\Config
+ * @package srag\ActiveRecordConfig\LearningPath\Config
  */
 abstract class AbstractRepository
 {

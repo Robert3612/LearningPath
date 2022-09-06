@@ -1,6 +1,6 @@
 <?php
 
-namespace srag\RemovePluginDataConfirm\Learningpath;
+namespace srag\RemovePluginDataConfirm\LearningPath;
 
 require_once __DIR__ . "./../../../autoload.php";
 
@@ -9,15 +9,15 @@ use ilConfirmationGUI;
 use ilObjComponentSettingsGUI;
 use ilSession;
 use ilUtil;
-use srag\DIC\Learningpath\DICStatic;
-use srag\DIC\Learningpath\DICTrait;
+use srag\DIC\LearningPath\DICStatic;
+use srag\DIC\LearningPath\DICTrait;
 
 /**
  * Class RemovePluginDataConfirmCtrl
  *
- * @package           srag\RemovePluginDataConfirm\Learningpath
+ * @package           srag\RemovePluginDataConfirm\LearningPath
  *
- * @ilCtrl_isCalledBy srag\RemovePluginDataConfirm\Learningpath\RemovePluginDataConfirmCtrl: ilUIPluginRouterGUI
+ * @ilCtrl_isCalledBy srag\RemovePluginDataConfirm\LearningPath\RemovePluginDataConfirmCtrl: ilUIPluginRouterGUI
  */
 class RemovePluginDataConfirmCtrl
 {

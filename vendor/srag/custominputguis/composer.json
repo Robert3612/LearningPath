@@ -17,7 +17,7 @@
   },
   "autoload": {
     "psr-4": {
-      "srag\\CustomInputGUIs\\Learningpath\\": "src/"
+      "srag\\CustomInputGUIs\\LearningPath\\": "src/"
     },
     "classmap": [
       "src/MultiSelectSearchNewInputGUI/class.ObjectChildrenAjaxAutoCompleteCtrl.php",

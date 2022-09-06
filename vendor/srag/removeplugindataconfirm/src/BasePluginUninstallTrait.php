@@ -1,15 +1,15 @@
 <?php
 
-namespace srag\RemovePluginDataConfirm\Learningpath;
+namespace srag\RemovePluginDataConfirm\LearningPath;
 
 use ilUIPluginRouterGUI;
-use srag\DIC\Learningpath\DICTrait;
-use srag\LibraryLanguageInstaller\Learningpath\LibraryLanguageInstaller;
+use srag\DIC\LearningPath\DICTrait;
+use srag\LibraryLanguageInstaller\LearningPath\LibraryLanguageInstaller;
 
 /**
  * Trait BasePluginUninstallTrait
  *
- * @package srag\RemovePluginDataConfirm\Learningpath
+ * @package srag\RemovePluginDataConfirm\LearningPath
  *
  * @access  namespace
  */

@@ -1,13 +1,13 @@
 <?php
 
-namespace srag\DIC\Learningpath\Exception;
+namespace srag\DIC\LearningPath\Exception;
 
 use ilException;
 
 /**
  * Class DICException
  *
- * @package srag\DIC\Learningpath\Exception
+ * @package srag\DIC\LearningPath\Exception
  */
 final class DICException extends ilException
 {

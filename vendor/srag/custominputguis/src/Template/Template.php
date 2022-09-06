@@ -1,13 +1,13 @@
 <?php
 
-namespace srag\CustomInputGUIs\Learningpath\Template;
+namespace srag\CustomInputGUIs\LearningPath\Template;
 
 use ilTemplate;
 
 /**
  * Class Template
  *
- * @package srag\CustomInputGUIs\Learningpath\Template
+ * @package srag\CustomInputGUIs\LearningPath\Template
  */
 class Template extends ilTemplate
 {

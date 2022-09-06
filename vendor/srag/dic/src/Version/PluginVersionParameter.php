@@ -1,16 +1,16 @@
 <?php
 
-namespace srag\DIC\Learningpath\Version;
+namespace srag\DIC\LearningPath\Version;
 
 use ilUtil;
-use srag\DIC\Learningpath\DICTrait;
-use srag\DIC\Learningpath\Plugin\Pluginable;
-use srag\DIC\Learningpath\Plugin\PluginInterface;
+use srag\DIC\LearningPath\DICTrait;
+use srag\DIC\LearningPath\Plugin\Pluginable;
+use srag\DIC\LearningPath\Plugin\PluginInterface;
 
 /**
  * Class PluginVersionParameter
  *
- * @package srag\DIC\Learningpath\Version
+ * @package srag\DIC\LearningPath\Version
  */
 final class PluginVersionParameter implements Pluginable
 {

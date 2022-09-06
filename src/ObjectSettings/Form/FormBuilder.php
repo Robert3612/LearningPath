@@ -1,29 +1,29 @@
 <?php
 
-namespace srag\Plugins\learningpath\ObjectSettings\Form;
+namespace srag\Plugins\LearningPath\ObjectSettings\Form;
 
-use srag\Plugins\learningpath\Utils\LearningpathTrait;
-use ilLearningpathPlugin;
-use ilObjLearningpath;
-use ilObjLearningpathGUI;
-use srag\CustomInputGUIs\Learningpath\FormBuilder\AbstractFormBuilder;
+use srag\Plugins\LearningPath\Utils\LearningPathTrait;
+use ilLearningPathPlugin;
+use ilObjLearningPath;
+use ilObjLearningPathGUI;
+use srag\CustomInputGUIs\LearningPath\FormBuilder\AbstractFormBuilder;
 
 /**
  * Class FormBuilder
  *
- * @package srag\Plugins\learningpath\ObjectSettings\Form
+ * @package srag\Plugins\LearningPath\ObjectSettings\Form
  *
- * @author robert <support@fluxlabs.ch>
+ * @author Robert <support@fluxlabs.ch>
  * @author fluxlabs <support@fluxlabs.ch>
  */
 class FormBuilder extends AbstractFormBuilder
 {
 
-    use LearningpathTrait;
+    use LearningPathTrait;
 
-    const PLUGIN_CLASS_NAME = ilLearningpathPlugin::class;
+    const PLUGIN_CLASS_NAME = ilLearningPathPlugin::class;
     /**
-     * @var ilObjLearningpath
+     * @var ilObjLearningPath
      */
     protected $object;
 
@@ -31,10 +31,10 @@ class FormBuilder extends AbstractFormBuilder
     /**
      * @inheritDoc
      *
-     * @param ilObjLearningpathGUI $parent
-     * @param ilObjLearningpath    $object
+     * @param ilObjLearningPathGUI $parent
+     * @param ilObjLearningPath    $object
      */
-    public function __construct(ilObjLearningpathGUI $parent, ilObjLearningpath $object)
+    public function __construct(ilObjLearningPathGUI $parent, ilObjLearningPath $object)
     {
         $this->object = $object;
 
@@ -48,8 +48,8 @@ class FormBuilder extends AbstractFormBuilder
     protected function getButtons() : array
     {
         $buttons = [
-            ilObjLearningpathGUI::CMD_SETTINGS_STORE  => self::plugin()->translate("save", ilObjLearningpathGUI::LANG_MODULE_SETTINGS),
-            ilObjLearningpathGUI::CMD_MANAGE_CONTENTS => self::plugin()->translate("cancel", ilObjLearningpathGUI::LANG_MODULE_SETTINGS)
+            ilObjLearningPathGUI::CMD_SETTINGS_STORE  => self::plugin()->translate("save", ilObjLearningPathGUI::LANG_MODULE_SETTINGS),
+            ilObjLearningPathGUI::CMD_MANAGE_CONTENTS => self::plugin()->translate("cancel", ilObjLearningPathGUI::LANG_MODULE_SETTINGS)
         ];
 
         return $buttons;
@@ -77,9 +77,9 @@ class FormBuilder extends AbstractFormBuilder
     protected function getFields() : array
     {
         $fields = [
-            "title"       => self::dic()->ui()->factory()->input()->field()->text(self::plugin()->translate("title", ilObjLearningpathGUI::LANG_MODULE_SETTINGS))->withRequired(true),
-            "description" => self::dic()->ui()->factory()->input()->field()->textarea(self::plugin()->translate("description", ilObjLearningpathGUI::LANG_MODULE_SETTINGS)),
-            "online"      => self::dic()->ui()->factory()->input()->field()->checkbox(self::plugin()->translate("online", ilObjLearningpathGUI::LANG_MODULE_SETTINGS))
+            "title"       => self::dic()->ui()->factory()->input()->field()->text(self::plugin()->translate("title", ilObjLearningPathGUI::LANG_MODULE_SETTINGS))->withRequired(true),
+            "description" => self::dic()->ui()->factory()->input()->field()->textarea(self::plugin()->translate("description", ilObjLearningPathGUI::LANG_MODULE_SETTINGS)),
+            "online"      => self::dic()->ui()->factory()->input()->field()->checkbox(self::plugin()->translate("online", ilObjLearningPathGUI::LANG_MODULE_SETTINGS))
         ];
 
         return $fields;
@@ -91,7 +91,7 @@ class FormBuilder extends AbstractFormBuilder
      */
     protected function getTitle() : string
     {
-        return self::plugin()->translate("settings", ilObjLearningpathGUI::LANG_MODULE_SETTINGS);
+        return self::plugin()->translate("settings", ilObjLearningPathGUI::LANG_MODULE_SETTINGS);
     }
 
 

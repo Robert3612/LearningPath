@@ -1,6 +1,6 @@
 <?php
 
-namespace srag\CustomInputGUIs\Learningpath\PropertyFormGUI\Items;
+namespace srag\CustomInputGUIs\LearningPath\PropertyFormGUI\Items;
 
 use ilDateTime;
 use ilFormPropertyGUI;
@@ -11,21 +11,21 @@ use ilPropertyFormGUI;
 use ilRadioOption;
 use ilRepositorySelector2InputGUI;
 use ilUtil;
-use srag\CustomInputGUIs\Learningpath\HiddenInputGUI\HiddenInputGUI;
-use srag\CustomInputGUIs\Learningpath\PropertyFormGUI\Exception\PropertyFormGUIException;
-use srag\CustomInputGUIs\Learningpath\PropertyFormGUI\PropertyFormGUI;
-use srag\CustomInputGUIs\Learningpath\TableGUI\TableGUI;
-use srag\CustomInputGUIs\Learningpath\Template\Template;
-use srag\CustomInputGUIs\Learningpath\UIInputComponentWrapperInputGUI\UIInputComponentWrapperInputGUI;
-use srag\DIC\Learningpath\DICTrait;
-use srag\DIC\Learningpath\Plugin\PluginInterface;
-use srag\DIC\Learningpath\Version\PluginVersionParameter;
+use srag\CustomInputGUIs\LearningPath\HiddenInputGUI\HiddenInputGUI;
+use srag\CustomInputGUIs\LearningPath\PropertyFormGUI\Exception\PropertyFormGUIException;
+use srag\CustomInputGUIs\LearningPath\PropertyFormGUI\PropertyFormGUI;
+use srag\CustomInputGUIs\LearningPath\TableGUI\TableGUI;
+use srag\CustomInputGUIs\LearningPath\Template\Template;
+use srag\CustomInputGUIs\LearningPath\UIInputComponentWrapperInputGUI\UIInputComponentWrapperInputGUI;
+use srag\DIC\LearningPath\DICTrait;
+use srag\DIC\LearningPath\Plugin\PluginInterface;
+use srag\DIC\LearningPath\Version\PluginVersionParameter;
 use TypeError;
 
 /**
  * Class Items
  *
- * @package srag\CustomInputGUIs\Learningpath\PropertyFormGUI\Items
+ * @package srag\CustomInputGUIs\LearningPath\PropertyFormGUI\Items
  *
  * @access  namespace
  */

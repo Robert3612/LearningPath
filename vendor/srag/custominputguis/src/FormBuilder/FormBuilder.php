@@ -1,13 +1,13 @@
 <?php
 
-namespace srag\CustomInputGUIs\Learningpath\FormBuilder;
+namespace srag\CustomInputGUIs\LearningPath\FormBuilder;
 
 use ILIAS\UI\Component\Input\Container\Form\Form;
 
 /**
  * Interface FormBuilder
  *
- * @package srag\CustomInputGUIs\Learningpath\FormBuilder
+ * @package srag\CustomInputGUIs\LearningPath\FormBuilder
  */
 interface FormBuilder
 {

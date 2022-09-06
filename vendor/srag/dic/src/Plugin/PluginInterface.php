@@ -1,16 +1,16 @@
 <?php
 
-namespace srag\DIC\Learningpath\Plugin;
+namespace srag\DIC\LearningPath\Plugin;
 
 use ilPlugin;
 use ilTemplateException;
-use srag\CustomInputGUIs\Learningpath\Template\Template;
-use srag\DIC\Learningpath\Exception\DICException;
+use srag\CustomInputGUIs\LearningPath\Template\Template;
+use srag\DIC\LearningPath\Exception\DICException;
 
 /**
  * Interface PluginInterface
  *
- * @package srag\DIC\Learningpath\Plugin
+ * @package srag\DIC\LearningPath\Plugin
  */
 interface PluginInterface
 {

@@ -1,14 +1,14 @@
 <?php
 
-namespace srag\CustomInputGUIs\Learningpath;
+namespace srag\CustomInputGUIs\LearningPath;
 
-use srag\CustomInputGUIs\Learningpath\ViewControlModeUI\ViewControlModeUI;
-use srag\DIC\Learningpath\DICTrait;
+use srag\CustomInputGUIs\LearningPath\ViewControlModeUI\ViewControlModeUI;
+use srag\DIC\LearningPath\DICTrait;
 
 /**
  * Class CustomInputGUIs
  *
- * @package srag\CustomInputGUIs\Learningpath
+ * @package srag\CustomInputGUIs\LearningPath
  */
 final class CustomInputGUIs
 {

@@ -1,13 +1,13 @@
 <?php
 
-namespace srag\CustomInputGUIs\Learningpath\TableGUI\Exception;
+namespace srag\CustomInputGUIs\LearningPath\TableGUI\Exception;
 
 use ilException;
 
 /**
  * Class TableGUIException
  *
- * @package srag\CustomInputGUIs\Learningpath\TableGUI\Exception
+ * @package srag\CustomInputGUIs\LearningPath\TableGUI\Exception
  *
  * @deprecated
  */

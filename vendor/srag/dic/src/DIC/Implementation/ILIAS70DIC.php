@@ -1,6 +1,6 @@
 <?php
 
-namespace srag\DIC\Learningpath\DIC\Implementation;
+namespace srag\DIC\LearningPath\DIC\Implementation;
 
 use Collator;
 use ilAccessHandler;
@@ -65,12 +65,12 @@ use ilToolbarGUI;
 use ilTree;
 use ilUIService;
 use Session;
-use srag\DIC\Learningpath\DIC\AbstractDIC;
+use srag\DIC\LearningPath\DIC\AbstractDIC;
 
 /**
  * Class ILIAS70DIC
  *
- * @package srag\DIC\Learningpath\DIC\Implementation
+ * @package srag\DIC\LearningPath\DIC\Implementation
  */
 final class ILIAS70DIC extends AbstractDIC
 {

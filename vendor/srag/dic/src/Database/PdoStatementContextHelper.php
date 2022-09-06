@@ -1,16 +1,16 @@
 <?php
 
-namespace srag\DIC\Learningpath\Database;
+namespace srag\DIC\LearningPath\Database;
 
 use ilDBStatement;
 use ilPDOStatement;
 use PDOStatement;
-use srag\DIC\Learningpath\Exception\DICException;
+use srag\DIC\LearningPath\Exception\DICException;
 
 /**
  * Class PdoStatementContextHelper
  *
- * @package srag\DIC\Learningpath\Database
+ * @package srag\DIC\LearningPath\Database
  *
  * @internal
  */

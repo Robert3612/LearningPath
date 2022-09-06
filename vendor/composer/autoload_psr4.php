@@ -6,12 +6,13 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'srag\\RemovePluginDataConfirm\\Learningpath\\' => array($vendorDir . '/srag/removeplugindataconfirm/src'),
-    'srag\\Plugins\\learningpath\\' => array($baseDir . '/src'),
-    'srag\\LibraryLanguageInstaller\\Learningpath\\' => array($vendorDir . '/srag/librarylanguageinstaller/src'),
+    'srag\\RemovePluginDataConfirm\\LearningPath\\' => array($vendorDir . '/srag/removeplugindataconfirm/src'),
+    'srag\\Plugins\\LearningPath\\' => array($baseDir . '/src'),
+    'srag\\LibraryLanguageInstaller\\LearningPath\\' => array($vendorDir . '/srag/librarylanguageinstaller/src'),
     'srag\\LibrariesNamespaceChanger\\' => array($vendorDir . '/srag/librariesnamespacechanger/src'),
-    'srag\\DevTools\\Learningpath\\' => array($vendorDir . '/srag/devtools/src'),
-    'srag\\DIC\\Learningpath\\' => array($vendorDir . '/srag/dic/src'),
-    'srag\\CustomInputGUIs\\Learningpath\\' => array($vendorDir . '/srag/custominputguis/src'),
-    'srag\\ActiveRecordConfig\\Learningpath\\' => array($vendorDir . '/srag/activerecordconfig/src'),
+    'srag\\GeneratePluginInfosHelper\\LearningPath\\' => array($vendorDir . '/srag/generateplugininfoshelper/src'),
+    'srag\\DevTools\\LearningPath\\' => array($vendorDir . '/srag/devtools/src'),
+    'srag\\DIC\\LearningPath\\' => array($vendorDir . '/srag/dic/src'),
+    'srag\\CustomInputGUIs\\LearningPath\\' => array($vendorDir . '/srag/custominputguis/src'),
+    'srag\\ActiveRecordConfig\\LearningPath\\' => array($vendorDir . '/srag/activerecordconfig/src'),
 );

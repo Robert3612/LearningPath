@@ -25,7 +25,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "srag\\ActiveRecordConfig\\Learningpath\\": "src/"
+                    "srag\\ActiveRecordConfig\\LearningPath\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -68,7 +68,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "srag\\CustomInputGUIs\\Learningpath\\": "src/"
+                    "srag\\CustomInputGUIs\\LearningPath\\": "src/"
                 },
                 "classmap": [
                     "src/MultiSelectSearchNewInputGUI/class.ObjectChildrenAjaxAutoCompleteCtrl.php",
@@ -120,7 +120,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "srag\\DevTools\\Learningpath\\": "src/"
+                    "srag\\DevTools\\LearningPath\\": "src/"
                 },
                 "classmap": [
                     "src/class.DevToolsCtrl.php"
@@ -166,7 +166,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "srag\\DIC\\Learningpath\\": "src/"
+                    "srag\\DIC\\LearningPath\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -185,6 +185,49 @@
             },
             "abandoned": true,
             "install-path": "../srag/dic"
+        },
+        {
+            "name": "srag/generateplugininfoshelper",
+            "version": "2.13.0",
+            "version_normalized": "2.13.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fluxfw/GeneratePluginInfosHelper.git",
+                "reference": "f6db1f0fce57f28ac57cd9671809f78dbb5c4140"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fluxfw/GeneratePluginInfosHelper/zipball/f6db1f0fce57f28ac57cd9671809f78dbb5c4140",
+                "reference": "f6db1f0fce57f28ac57cd9671809f78dbb5c4140",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "time": "2022-07-18T08:32:14+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "srag\\GeneratePluginInfosHelper\\LearningPath\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-only"
+            ],
+            "description": "Automatic generate plugin infos such README.md, plugin.php, plugin.xml, ... from composer.json",
+            "keywords": [
+                "Infos",
+                "generate",
+                "helper",
+                "plugin"
+            ],
+            "support": {
+                "source": "https://github.com/fluxfw/GeneratePluginInfosHelper/tree/v2.13.0"
+            },
+            "abandoned": true,
+            "install-path": "../srag/generateplugininfoshelper"
         },
         {
             "name": "srag/librariesnamespacechanger",
@@ -252,7 +295,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "srag\\LibraryLanguageInstaller\\Learningpath\\": "src/"
+                    "srag\\LibraryLanguageInstaller\\LearningPath\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -297,7 +340,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "srag\\RemovePluginDataConfirm\\Learningpath\\": "src/"
+                    "srag\\RemovePluginDataConfirm\\LearningPath\\": "src/"
                 },
                 "classmap": [
                     "src/class.RemovePluginDataConfirmCtrl.php"

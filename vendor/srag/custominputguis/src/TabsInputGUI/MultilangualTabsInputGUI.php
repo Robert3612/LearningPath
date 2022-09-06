@@ -1,15 +1,15 @@
 <?php
 
-namespace srag\CustomInputGUIs\Learningpath\TabsInputGUI;
+namespace srag\CustomInputGUIs\LearningPath\TabsInputGUI;
 
 use ilFormPropertyGUI;
-use srag\CustomInputGUIs\Learningpath\PropertyFormGUI\PropertyFormGUI;
-use srag\DIC\Learningpath\DICTrait;
+use srag\CustomInputGUIs\LearningPath\PropertyFormGUI\PropertyFormGUI;
+use srag\DIC\LearningPath\DICTrait;
 
 /**
  * Class MultilangualTabsInputGUI
  *
- * @package srag\CustomInputGUIs\Learningpath\TabsInputGUI
+ * @package srag\CustomInputGUIs\LearningPath\TabsInputGUI
  */
 class MultilangualTabsInputGUI
 {

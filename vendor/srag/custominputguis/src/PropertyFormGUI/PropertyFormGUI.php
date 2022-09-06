@@ -1,6 +1,6 @@
 <?php
 
-namespace srag\CustomInputGUIs\Learningpath\PropertyFormGUI;
+namespace srag\CustomInputGUIs\LearningPath\PropertyFormGUI;
 
 use Closure;
 use ilFormPropertyGUI;
@@ -9,17 +9,17 @@ use ilPropertyFormGUI;
 use ilRadioGroupInputGUI;
 use ilRadioOption;
 use ilSubEnabledFormPropertyGUI;
-use srag\CustomInputGUIs\Learningpath\MultiLineNewInputGUI\MultiLineNewInputGUI;
-use srag\CustomInputGUIs\Learningpath\PropertyFormGUI\Exception\PropertyFormGUIException;
-use srag\CustomInputGUIs\Learningpath\PropertyFormGUI\Items\Items;
-use srag\CustomInputGUIs\Learningpath\TabsInputGUI\TabsInputGUI;
-use srag\CustomInputGUIs\Learningpath\TabsInputGUI\TabsInputGUITab;
-use srag\DIC\Learningpath\DICTrait;
+use srag\CustomInputGUIs\LearningPath\MultiLineNewInputGUI\MultiLineNewInputGUI;
+use srag\CustomInputGUIs\LearningPath\PropertyFormGUI\Exception\PropertyFormGUIException;
+use srag\CustomInputGUIs\LearningPath\PropertyFormGUI\Items\Items;
+use srag\CustomInputGUIs\LearningPath\TabsInputGUI\TabsInputGUI;
+use srag\CustomInputGUIs\LearningPath\TabsInputGUI\TabsInputGUITab;
+use srag\DIC\LearningPath\DICTrait;
 
 /**
  * Class PropertyFormGUI
  *
- * @package    srag\CustomInputGUIs\Learningpath\PropertyFormGUI
+ * @package    srag\CustomInputGUIs\LearningPath\PropertyFormGUI
  *
  * @deprecated Please use `AbstractFormBuilder`
  */

@@ -1,6 +1,6 @@
 <?php
 
-namespace srag\DIC\Learningpath\Database;
+namespace srag\DIC\LearningPath\Database;
 
 use ilDBConstants;
 use ilDBInterface;
@@ -8,13 +8,13 @@ use ilDBPdoInterface;
 use ilDBPdoPostgreSQL;
 use ilDBStatement;
 use PDO;
-use srag\DIC\Learningpath\Exception\DICException;
+use srag\DIC\LearningPath\Exception\DICException;
 use stdClass;
 
 /**
  * Class DatabaseDetector
  *
- * @package srag\DIC\Learningpath\Database
+ * @package srag\DIC\LearningPath\Database
  */
 class DatabaseDetector extends AbstractILIASDatabaseDetector
 {

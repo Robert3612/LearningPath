@@ -17,7 +17,7 @@
   },
   "autoload": {
     "psr-4": {
-      "srag\\DevTools\\Learningpath\\": "src/"
+      "srag\\DevTools\\LearningPath\\": "src/"
     },
     "classmap": [
       "src/class.DevToolsCtrl.php"

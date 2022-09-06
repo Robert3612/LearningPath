@@ -1,11 +1,11 @@
 <?php
 
-namespace srag\DIC\Learningpath\Version;
+namespace srag\DIC\LearningPath\Version;
 
 /**
  * Class Version
  *
- * @package srag\DIC\Learningpath\Version
+ * @package srag\DIC\LearningPath\Version
  */
 final class Version implements VersionInterface
 {

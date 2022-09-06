@@ -1,6 +1,6 @@
 <?php
 
-namespace srag\DIC\Learningpath\Database;
+namespace srag\DIC\LearningPath\Database;
 
 use ilDBPdoInterface;
 use ilDBStatement;
@@ -8,7 +8,7 @@ use ilDBStatement;
 /**
  * Interface DatabaseInterface
  *
- * @package srag\DIC\Learningpath\Database
+ * @package srag\DIC\LearningPath\Database
  */
 interface DatabaseInterface extends ilDBPdoInterface
 {

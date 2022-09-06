@@ -1,17 +1,17 @@
 <?php
 
-namespace srag\CustomInputGUIs\Learningpath\StaticHTMLPresentationInputGUI;
+namespace srag\CustomInputGUIs\LearningPath\StaticHTMLPresentationInputGUI;
 
 use ilFormException;
 use ilFormPropertyGUI;
 use ilTemplate;
-use srag\CustomInputGUIs\Learningpath\Template\Template;
-use srag\DIC\Learningpath\DICTrait;
+use srag\CustomInputGUIs\LearningPath\Template\Template;
+use srag\DIC\LearningPath\DICTrait;
 
 /**
  * Class StaticHTMLPresentationInputGUI
  *
- * @package srag\CustomInputGUIs\Learningpath\StaticHTMLPresentationInputGUI
+ * @package srag\CustomInputGUIs\LearningPath\StaticHTMLPresentationInputGUI
  */
 class StaticHTMLPresentationInputGUI extends ilFormPropertyGUI
 {

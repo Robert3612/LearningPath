@@ -1,6 +1,6 @@
 <?php
 
-namespace srag\CustomInputGUIs\Learningpath\MultiSelectSearchNewInputGUI;
+namespace srag\CustomInputGUIs\LearningPath\MultiSelectSearchNewInputGUI;
 
 require_once __DIR__ . "/../../../../autoload.php";
 
@@ -10,7 +10,7 @@ use ilObjUser;
 /**
  * Class UsersAjaxAutoCompleteCtrl
  *
- * @package srag\CustomInputGUIs\Learningpath\MultiSelectSearchNewInputGUI
+ * @package srag\CustomInputGUIs\LearningPath\MultiSelectSearchNewInputGUI
  */
 class UsersAjaxAutoCompleteCtrl extends AbstractAjaxAutoCompleteCtrl
 {

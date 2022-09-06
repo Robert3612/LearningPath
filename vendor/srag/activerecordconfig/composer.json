@@ -16,7 +16,7 @@
   },
   "autoload": {
     "psr-4": {
-      "srag\\ActiveRecordConfig\\Learningpath\\": "src/"
+      "srag\\ActiveRecordConfig\\LearningPath\\": "src/"
     }
   },
   "config": {

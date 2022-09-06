@@ -1,27 +1,27 @@
 <?php
 
-namespace srag\Plugins\learningpath\Config\Form;
+namespace srag\Plugins\LearningPath\Config\Form;
 
-use srag\Plugins\learningpath\Config\ConfigCtrl;
-use srag\Plugins\learningpath\Utils\LearningpathTrait;
-use ilLearningpathPlugin;
-use srag\CustomInputGUIs\Learningpath\FormBuilder\AbstractFormBuilder;
+use srag\Plugins\LearningPath\Config\ConfigCtrl;
+use srag\Plugins\LearningPath\Utils\LearningPathTrait;
+use ilLearningPathPlugin;
+use srag\CustomInputGUIs\LearningPath\FormBuilder\AbstractFormBuilder;
 
 /**
  * Class FormBuilder
  *
- * @package srag\Plugins\learningpath\Config\Form
+ * @package srag\Plugins\LearningPath\Config\Form
  *
- * @author robert <support@fluxlabs.ch>
+ * @author Robert <support@fluxlabs.ch>
  * @author fluxlabs <support@fluxlabs.ch>
  */
 class FormBuilder extends AbstractFormBuilder
 {
 
-    use LearningpathTrait;
+    use LearningPathTrait;
 
     const KEY_SOME = "some";
-    const PLUGIN_CLASS_NAME = ilLearningpathPlugin::class;
+    const PLUGIN_CLASS_NAME = ilLearningPathPlugin::class;
 
 
     /**
@@ -54,7 +54,7 @@ class FormBuilder extends AbstractFormBuilder
     protected function getData() : array
     {
         $data = [
-            self::KEY_SOME => self::learningpath()->config()->getValue(self::KEY_SOME)
+            self::KEY_SOME => self::learningPath()->config()->getValue(self::KEY_SOME)
         ];
 
         return $data;
@@ -88,6 +88,6 @@ class FormBuilder extends AbstractFormBuilder
      */
     protected function storeData(array $data) : void
     {
-        self::learningpath()->config()->setValue(self::KEY_SOME, strval($data[self::KEY_SOME]));
+        self::learningPath()->config()->setValue(self::KEY_SOME, strval($data[self::KEY_SOME]));
     }
 }

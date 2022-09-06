@@ -1,6 +1,6 @@
 <?php
 
-namespace srag\CustomInputGUIs\Learningpath\InputGUIWrapperUIInputComponent;
+namespace srag\CustomInputGUIs\LearningPath\InputGUIWrapperUIInputComponent;
 
 use Closure;
 use ilCheckboxInputGUI;
@@ -10,13 +10,13 @@ use ILIAS\Refinery\Constraint;
 use ILIAS\UI\Implementation\Component\Input\Field\Input;
 use ILIAS\UI\Implementation\Component\Input\NameSource;
 use ilRepositorySelector2InputGUI;
-use srag\CustomInputGUIs\Learningpath\PropertyFormGUI\Items\Items;
-use srag\DIC\Learningpath\DICTrait;
+use srag\CustomInputGUIs\LearningPath\PropertyFormGUI\Items\Items;
+use srag\DIC\LearningPath\DICTrait;
 
 /**
  * Class InputGUIWrapperUIInputComponent
  *
- * @package srag\CustomInputGUIs\Learningpath\InputGUIWrapperUIInputComponent
+ * @package srag\CustomInputGUIs\LearningPath\InputGUIWrapperUIInputComponent
  */
 class InputGUIWrapperUIInputComponent extends Input
 {

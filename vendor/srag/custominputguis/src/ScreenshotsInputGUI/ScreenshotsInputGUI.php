@@ -1,6 +1,6 @@
 <?php
 
-namespace srag\CustomInputGUIs\Learningpath\ScreenshotsInputGUI;
+namespace srag\CustomInputGUIs\LearningPath\ScreenshotsInputGUI;
 
 use GuzzleHttp\Psr7\UploadedFile;
 use ilFormException;
@@ -8,15 +8,15 @@ use ilFormPropertyGUI;
 use ILIAS\FileUpload\DTO\ProcessingStatus;
 use ILIAS\FileUpload\DTO\UploadResult;
 use ilTemplate;
-use srag\DIC\Learningpath\DICTrait;
-use srag\DIC\Learningpath\Plugin\Pluginable;
-use srag\DIC\Learningpath\Plugin\PluginInterface;
-use srag\DIC\Learningpath\Version\PluginVersionParameter;
+use srag\DIC\LearningPath\DICTrait;
+use srag\DIC\LearningPath\Plugin\Pluginable;
+use srag\DIC\LearningPath\Plugin\PluginInterface;
+use srag\DIC\LearningPath\Version\PluginVersionParameter;
 
 /**
  * Class ScreenshotsInputGUI
  *
- * @package srag\CustomInputGUIs\Learningpath\ScreenshotsInputGUI
+ * @package srag\CustomInputGUIs\LearningPath\ScreenshotsInputGUI
  */
 class ScreenshotsInputGUI extends ilFormPropertyGUI implements Pluginable
 {

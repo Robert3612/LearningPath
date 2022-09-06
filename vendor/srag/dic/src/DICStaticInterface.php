@@ -1,17 +1,17 @@
 <?php
 
-namespace srag\DIC\Learningpath;
+namespace srag\DIC\LearningPath;
 
-use srag\DIC\Learningpath\DIC\DICInterface;
-use srag\DIC\Learningpath\Exception\DICException;
-use srag\DIC\Learningpath\Output\OutputInterface;
-use srag\DIC\Learningpath\Plugin\PluginInterface;
-use srag\DIC\Learningpath\Version\VersionInterface;
+use srag\DIC\LearningPath\DIC\DICInterface;
+use srag\DIC\LearningPath\Exception\DICException;
+use srag\DIC\LearningPath\Output\OutputInterface;
+use srag\DIC\LearningPath\Plugin\PluginInterface;
+use srag\DIC\LearningPath\Version\VersionInterface;
 
 /**
  * Interface DICStaticInterface
  *
- * @package srag\DIC\Learningpath
+ * @package srag\DIC\LearningPath
  */
 interface DICStaticInterface
 {

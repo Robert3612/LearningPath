@@ -1,11 +1,11 @@
 <?php
 
-namespace srag\CustomInputGUIs\Learningpath;
+namespace srag\CustomInputGUIs\LearningPath;
 
 /**
  * Trait CustomInputGUIsTrait
  *
- * @package srag\CustomInputGUIs\Learningpath
+ * @package srag\CustomInputGUIs\LearningPath
  */
 trait CustomInputGUIsTrait
 {

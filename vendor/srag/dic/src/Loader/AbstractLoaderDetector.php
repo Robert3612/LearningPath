@@ -1,17 +1,17 @@
 <?php
 
-namespace srag\DIC\Learningpath\Loader;
+namespace srag\DIC\LearningPath\Loader;
 
 use ILIAS\UI\Component\Component;
 use ILIAS\UI\Implementation\Render\ComponentRenderer;
 use ILIAS\UI\Implementation\Render\Loader;
 use ILIAS\UI\Implementation\Render\RendererFactory;
-use srag\DIC\Learningpath\DICTrait;
+use srag\DIC\LearningPath\DICTrait;
 
 /**
  * Class AbstractLoaderDetector
  *
- * @package srag\DIC\Learningpath\Loader
+ * @package srag\DIC\LearningPath\Loader
  */
 abstract class AbstractLoaderDetector implements Loader
 {

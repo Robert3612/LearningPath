@@ -16,7 +16,7 @@
   },
   "autoload": {
     "psr-4": {
-      "srag\\LibraryLanguageInstaller\\Learningpath\\": "src/"
+      "srag\\LibraryLanguageInstaller\\LearningPath\\": "src/"
     }
   },
   "config": {

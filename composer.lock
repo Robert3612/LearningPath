@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aac0aedbc671a703a056dd961092b028",
+    "content-hash": "0eff22e09dd1a350aba343804c89896e",
     "packages": [
         {
             "name": "srag/activerecordconfig",
@@ -179,6 +179,46 @@
             },
             "abandoned": true,
             "time": "2022-07-18T08:28:06+00:00"
+        },
+        {
+            "name": "srag/generateplugininfoshelper",
+            "version": "2.13.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fluxfw/GeneratePluginInfosHelper.git",
+                "reference": "f6db1f0fce57f28ac57cd9671809f78dbb5c4140"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fluxfw/GeneratePluginInfosHelper/zipball/f6db1f0fce57f28ac57cd9671809f78dbb5c4140",
+                "reference": "f6db1f0fce57f28ac57cd9671809f78dbb5c4140",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "srag\\GeneratePluginInfosHelper\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-only"
+            ],
+            "description": "Automatic generate plugin infos such README.md, plugin.php, plugin.xml, ... from composer.json",
+            "keywords": [
+                "Infos",
+                "generate",
+                "helper",
+                "plugin"
+            ],
+            "support": {
+                "source": "https://github.com/fluxfw/GeneratePluginInfosHelper/tree/v2.13.0"
+            },
+            "abandoned": true,
+            "time": "2022-07-18T08:32:14+00:00"
         },
         {
             "name": "srag/librariesnamespacechanger",

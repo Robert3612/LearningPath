@@ -1,16 +1,16 @@
 <?php
 
-namespace srag\DIC\Learningpath\Output;
+namespace srag\DIC\LearningPath\Output;
 
 use ilTemplateException;
 use JsonSerializable;
-use srag\DIC\Learningpath\Exception\DICException;
+use srag\DIC\LearningPath\Exception\DICException;
 use stdClass;
 
 /**
  * Interface OutputInterface
  *
- * @package srag\DIC\Learningpath\Output
+ * @package srag\DIC\LearningPath\Output
  */
 interface OutputInterface
 {

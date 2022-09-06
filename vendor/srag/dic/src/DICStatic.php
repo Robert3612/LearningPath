@@ -1,24 +1,24 @@
 <?php
 
-namespace srag\DIC\Learningpath;
+namespace srag\DIC\LearningPath;
 
 use ilLogLevel;
 use ilPlugin;
-use srag\DIC\Learningpath\DIC\DICInterface;
-use srag\DIC\Learningpath\DIC\Implementation\ILIAS60DIC;
-use srag\DIC\Learningpath\DIC\Implementation\ILIAS70DIC;
-use srag\DIC\Learningpath\Exception\DICException;
-use srag\DIC\Learningpath\Output\Output;
-use srag\DIC\Learningpath\Output\OutputInterface;
-use srag\DIC\Learningpath\Plugin\Plugin;
-use srag\DIC\Learningpath\Plugin\PluginInterface;
-use srag\DIC\Learningpath\Version\Version;
-use srag\DIC\Learningpath\Version\VersionInterface;
+use srag\DIC\LearningPath\DIC\DICInterface;
+use srag\DIC\LearningPath\DIC\Implementation\ILIAS60DIC;
+use srag\DIC\LearningPath\DIC\Implementation\ILIAS70DIC;
+use srag\DIC\LearningPath\Exception\DICException;
+use srag\DIC\LearningPath\Output\Output;
+use srag\DIC\LearningPath\Output\OutputInterface;
+use srag\DIC\LearningPath\Plugin\Plugin;
+use srag\DIC\LearningPath\Plugin\PluginInterface;
+use srag\DIC\LearningPath\Version\Version;
+use srag\DIC\LearningPath\Version\VersionInterface;
 
 /**
  * Class DICStatic
  *
- * @package srag\DIC\Learningpath
+ * @package srag\DIC\LearningPath
  */
 final class DICStatic implements DICStaticInterface
 {

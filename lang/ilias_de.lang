@@ -1,13 +1,13 @@
-obj_xlpa#:#Learningpath
-obj_xlpa_duplicate#:#Learningpath kopieren
-objs_xlpa#:#Learningpath's
-objs_xlpa_duplicate#:#Learningpath's kopieren
-rbac_create_xlpa#:#Learningpath anlegen
-rep_robj_xlpa_obj_xlpa#:#Learningpath
+obj_xlpa#:#LearningPath
+obj_xlpa_duplicate#:#LearningPath kopieren
+objs_xlpa#:#LearningPath's
+objs_xlpa_duplicate#:#LearningPath's kopieren
+rbac_create_xlpa#:#LearningPath anlegen
+rep_robj_xlpa_obj_xlpa#:#LearningPath
 xlpa_add#:#Hinzufügen
 xlpa_delete#:#Löschen
 xlpa_edit_permission#:#Rechte bearbeiten
-xlpa_new#:#Learningpath anlegen
+xlpa_new#:#LearningPath anlegen
 xlpa_read#:#Lesen
 xlpa_visible#:#Sichtbar
 xlpa_write#:#Bearbeiten

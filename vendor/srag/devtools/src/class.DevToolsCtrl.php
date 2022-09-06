@@ -1,6 +1,6 @@
 <?php
 
-namespace srag\DevTools\Learningpath;
+namespace srag\DevTools\LearningPath;
 
 require_once __DIR__ . "/../../../autoload.php";
 
@@ -11,14 +11,14 @@ use ilObjComponentSettingsGUI;
 use ilPlugin;
 use ilPluginConfigGUI;
 use ilUtil;
-use srag\DIC\Learningpath\DICTrait;
-use srag\DIC\Learningpath\Plugin\PluginInterface;
-use srag\LibraryLanguageInstaller\Learningpath\LibraryLanguageInstaller;
+use srag\DIC\LearningPath\DICTrait;
+use srag\DIC\LearningPath\Plugin\PluginInterface;
+use srag\LibraryLanguageInstaller\LearningPath\LibraryLanguageInstaller;
 
 /**
  * Class DevToolsCtrl
  *
- * @package srag\DevTools\Learningpath
+ * @package srag\DevTools\LearningPath
  */
 class DevToolsCtrl
 {

@@ -1,4 +1,4 @@
 <#1>
 <?php
-\srag\Plugins\learningpath\Repository::getInstance()->installTables();
+\srag\Plugins\LearningPath\Repository::getInstance()->installTables();
 ?>

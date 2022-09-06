@@ -1,6 +1,6 @@
 <?php
 
-namespace srag\CustomInputGUIs\Learningpath\UIInputComponentWrapperInputGUI;
+namespace srag\CustomInputGUIs\LearningPath\UIInputComponentWrapperInputGUI;
 
 use ilFormException;
 use ilFormPropertyGUI;
@@ -9,16 +9,16 @@ use ILIAS\UI\Implementation\Component\Input\Container\Form\PostDataFromServerReq
 use ilTableFilterItem;
 use ilTemplate;
 use ilToolbarItem;
-use srag\CustomInputGUIs\Learningpath\Template\Template;
-use srag\DIC\Learningpath\DICTrait;
-use srag\DIC\Learningpath\Plugin\PluginInterface;
-use srag\DIC\Learningpath\Version\PluginVersionParameter;
+use srag\CustomInputGUIs\LearningPath\Template\Template;
+use srag\DIC\LearningPath\DICTrait;
+use srag\DIC\LearningPath\Plugin\PluginInterface;
+use srag\DIC\LearningPath\Version\PluginVersionParameter;
 use Throwable;
 
 /**
  * Class UIInputComponentWrapperInputGUI
  *
- * @package srag\CustomInputGUIs\Learningpath\UIInputComponentWrapperInputGUI
+ * @package srag\CustomInputGUIs\LearningPath\UIInputComponentWrapperInputGUI
  */
 class UIInputComponentWrapperInputGUI extends ilFormPropertyGUI implements ilTableFilterItem, ilToolbarItem
 {

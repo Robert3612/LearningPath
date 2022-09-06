@@ -40,7 +40,7 @@ Declare your class like follow:
 
 ```php
 //...
-use srag\DIC\Learningpath\DICTrait;
+use srag\DIC\LearningPath\DICTrait;
 //...
 class x {
 	//...
@@ -228,7 +228,7 @@ If you realy need to access to original ILIAS `ilDB` instance, use `self:.dic()-
 Use auto increment on a spec. field (in `dbupdate.php`):
 
 ```php
-use srag\DIC\Learningpath\x\DICStatic;use srag\Plugins\x\x\x;DICStatic::dic()->database()->createAutoIncrement(x::TABLE_NAME, "id");
+use srag\DIC\LearningPath\x\DICStatic;use srag\Plugins\x\x\x;DICStatic::dic()->database()->createAutoIncrement(x::TABLE_NAME, "id");
 ```
 
 Reset auto increment:
@@ -313,7 +313,7 @@ Optimal, it's also possible to pass a second URL which used if ILIAS Dev-Mode is
 
 ```php
 ...
-use srag\DIC\Learningpath\x\Version\PluginVersionParameter;
+use srag\DIC\LearningPath\x\Version\PluginVersionParameter;
 ...
 $version_parameter = PluginVersionParameter::getInstance()->withPlugin(self::plugin());
 self::dic()->ui()->mainTemplate()->addCss($version_parameter->appendToUrl("..."));

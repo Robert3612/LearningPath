@@ -1,17 +1,17 @@
 <?php
 
-namespace srag\CustomInputGUIs\Learningpath\Waiter;
+namespace srag\CustomInputGUIs\LearningPath\Waiter;
 
 use ilGlobalTemplateInterface;
 use ilTemplate;
-use srag\DIC\Learningpath\DICTrait;
-use srag\DIC\Learningpath\Plugin\PluginInterface;
-use srag\DIC\Learningpath\Version\PluginVersionParameter;
+use srag\DIC\LearningPath\DICTrait;
+use srag\DIC\LearningPath\Plugin\PluginInterface;
+use srag\DIC\LearningPath\Version\PluginVersionParameter;
 
 /**
  * Class Waiter
  *
- * @package srag\CustomInputGUIs\Learningpath\Waiter
+ * @package srag\CustomInputGUIs\LearningPath\Waiter
  */
 final class Waiter
 {

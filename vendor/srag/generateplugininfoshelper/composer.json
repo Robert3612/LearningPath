@@ -1,0 +1,26 @@
+{
+  "name": "srag/generateplugininfoshelper",
+  "description": "Automatic generate plugin infos such README.md, plugin.php, plugin.xml, ... from composer.json",
+  "version": "2.13.0",
+  "type": "library",
+  "keywords": [
+    "generate",
+    "helper",
+    "infos",
+    "plugin"
+  ],
+  "license": "GPL-3.0-only",
+  "require": {
+    "php": ">=7.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "srag\\GeneratePluginInfosHelper\\LearningPath\\": "src/"
+    }
+  },
+  "config": {
+    "classmap-authoritative": true,
+    "optimize-autoloader": true,
+    "sort-packages": true
+  }
+}

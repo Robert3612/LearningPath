@@ -1,6 +1,6 @@
 <?php
 
-namespace srag\DIC\Learningpath\DIC;
+namespace srag\DIC\LearningPath\DIC;
 
 use Collator;
 use ilAccessHandler;
@@ -65,13 +65,13 @@ use ilToolbarGUI;
 use ilTree;
 use ilUIService;
 use Session;
-use srag\DIC\Learningpath\Database\DatabaseInterface;
-use srag\DIC\Learningpath\Exception\DICException;
+use srag\DIC\LearningPath\Database\DatabaseInterface;
+use srag\DIC\LearningPath\Exception\DICException;
 
 /**
  * Interface DICInterface
  *
- * @package srag\DIC\Learningpath\DIC
+ * @package srag\DIC\LearningPath\DIC
  */
 interface DICInterface
 {

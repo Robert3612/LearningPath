@@ -25,8 +25,8 @@ class InstalledVersions
     private static $installed = array (
   'root' => 
   array (
-    'pretty_version' => '1.0.0+no-version-set',
-    'version' => '1.0.0.0',
+    'pretty_version' => '0.1.0',
+    'version' => '0.1.0.0',
     'aliases' => 
     array (
     ),
@@ -71,10 +71,19 @@ class InstalledVersions
       ),
       'reference' => '5eb4b2aa00eb8f77146c490bfdf38f9df3142ee5',
     ),
+    'srag/generateplugininfoshelper' => 
+    array (
+      'pretty_version' => '2.13.0',
+      'version' => '2.13.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'f6db1f0fce57f28ac57cd9671809f78dbb5c4140',
+    ),
     'srag/learningpath' => 
     array (
-      'pretty_version' => '1.0.0+no-version-set',
-      'version' => '1.0.0.0',
+      'pretty_version' => '0.1.0',
+      'version' => '0.1.0.0',
       'aliases' => 
       array (
       ),

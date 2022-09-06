@@ -1,16 +1,16 @@
 <?php
 
-namespace srag\CustomInputGUIs\Learningpath\InputGUIWrapperUIInputComponent;
+namespace srag\CustomInputGUIs\LearningPath\InputGUIWrapperUIInputComponent;
 
 use ILIAS\UI\Implementation\Component\Input\Field\Renderer;
 use ILIAS\UI\Implementation\Render\ResourceRegistry;
 use ILIAS\UI\Implementation\Render\Template;
-use srag\DIC\Learningpath\DICTrait;
+use srag\DIC\LearningPath\DICTrait;
 
 /**
  * Class AbstractRenderer
  *
- * @package srag\CustomInputGUIs\Learningpath\InputGUIWrapperUIInputComponent
+ * @package srag\CustomInputGUIs\LearningPath\InputGUIWrapperUIInputComponent
  */
 abstract class AbstractRenderer extends Renderer
 {

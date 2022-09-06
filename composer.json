@@ -1,16 +1,27 @@
 {
   "name": "srag/learningpath",
   "description": "Short description",
+  "version": "0.1.0",
+  "extra": {
+    "ilias_plugin": {
+      "id": "xlpa",
+      "name": "LearningPath",
+      "ilias_min_version": "6.0",
+      "ilias_max_version": "7.999",
+      "lucene_search": true,
+      "slot": "Services/Repository/RepositoryObject"
+    }
+  },
   "type": "project",
   "keywords": [
     "ILIAS",
     "Plugin"
   ],
-  "homepage": "https://github.com/fluxapps/Learningpath",
+  "homepage": "https://github.com/fluxapps/LearningPath",
   "license": "GPL-3.0-only",
   "authors": [
     {
-      "name": "robert",
+      "name": "Robert",
       "email": "support@fluxlabs.ch",
       "homepage": "https://fluxlabs.ch",
       "role": "Developer"
@@ -22,12 +33,13 @@
     "srag/custominputguis": ">=0.1.0",
     "srag/devtools": ">=0.1.0",
     "srag/dic": ">=0.1.0",
+    "srag/generateplugininfoshelper": ">=0.1.0",
     "srag/librariesnamespacechanger": ">=0.1.0",
     "srag/removeplugindataconfirm": ">=0.1.0"
   },
   "autoload": {
     "psr-4": {
-      "srag\\Plugins\\learningpath\\": "src/"
+      "srag\\Plugins\\LearningPath\\": "src/"
     },
     "classmap": [
       "classes/",
@@ -44,7 +56,8 @@
   },
   "scripts": {
     "pre-autoload-dump": [
-      "srag\\LibrariesNamespaceChanger\\LibrariesNamespaceChanger::rewriteLibrariesNamespaces"
+      "srag\\LibrariesNamespaceChanger\\LibrariesNamespaceChanger::rewriteLibrariesNamespaces",
+      "srag\\GeneratePluginInfosHelper\\LearningPath\\GeneratePluginPhpAndXml::generatePluginPhpAndXml"
     ]
   }
 }

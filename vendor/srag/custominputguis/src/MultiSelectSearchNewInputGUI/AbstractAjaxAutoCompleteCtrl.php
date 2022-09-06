@@ -1,13 +1,13 @@
 <?php
 
-namespace srag\CustomInputGUIs\Learningpath\MultiSelectSearchNewInputGUI;
+namespace srag\CustomInputGUIs\LearningPath\MultiSelectSearchNewInputGUI;
 
-use srag\DIC\Learningpath\DICTrait;
+use srag\DIC\LearningPath\DICTrait;
 
 /**
  * Class AbstractAjaxAutoCompleteCtrl
  *
- * @package srag\CustomInputGUIs\Learningpath\MultiSelectSearchNewInputGUI
+ * @package srag\CustomInputGUIs\LearningPath\MultiSelectSearchNewInputGUI
  */
 abstract class AbstractAjaxAutoCompleteCtrl
 {

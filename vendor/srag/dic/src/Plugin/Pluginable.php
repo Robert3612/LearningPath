@@ -1,11 +1,11 @@
 <?php
 
-namespace srag\DIC\Learningpath\Plugin;
+namespace srag\DIC\LearningPath\Plugin;
 
 /**
  * Interface Pluginable
  *
- * @package srag\DIC\Learningpath\Plugin
+ * @package srag\DIC\LearningPath\Plugin
  */
 interface Pluginable
 {

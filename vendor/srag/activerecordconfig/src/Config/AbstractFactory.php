@@ -1,13 +1,13 @@
 <?php
 
-namespace srag\ActiveRecordConfig\Learningpath\Config;
+namespace srag\ActiveRecordConfig\LearningPath\Config;
 
-use srag\DIC\Learningpath\DICTrait;
+use srag\DIC\LearningPath\DICTrait;
 
 /**
  * Class AbstractFactory
  *
- * @package srag\ActiveRecordConfig\Learningpath\Config
+ * @package srag\ActiveRecordConfig\LearningPath\Config
  */
 abstract class AbstractFactory
 {

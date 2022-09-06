@@ -1,4 +1,4 @@
-# Learningpath ILIAS Plugin
+# LearningPath ILIAS Plugin
 
 Short description
 
@@ -16,7 +16,7 @@ Start at your ILIAS root directory
 ```bash
 mkdir -p Customizing/global/plugins/Services/Repository/RepositoryObject
 cd Customizing/global/plugins/Services/Repository/RepositoryObject
-git clone https://github.com/fluxapps/Learningpath.git Learningpath
+git clone https://github.com/fluxapps/LearningPath.git LearningPath
 ```
 
 Update, activate and config the plugin in the ILIAS Plugin Administration

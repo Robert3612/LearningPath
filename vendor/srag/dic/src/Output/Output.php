@@ -1,20 +1,20 @@
 <?php
 
-namespace srag\DIC\Learningpath\Output;
+namespace srag\DIC\LearningPath\Output;
 
 use ILIAS\UI\Component\Component;
 use ILIAS\UI\Implementation\Render\Template;
 use ilTable2GUI;
 use ilTemplate;
 use JsonSerializable;
-use srag\DIC\Learningpath\DICTrait;
-use srag\DIC\Learningpath\Exception\DICException;
+use srag\DIC\LearningPath\DICTrait;
+use srag\DIC\LearningPath\Exception\DICException;
 use stdClass;
 
 /**
  * Class Output
  *
- * @package srag\DIC\Learningpath\Output
+ * @package srag\DIC\LearningPath\Output
  */
 final class Output implements OutputInterface
 {

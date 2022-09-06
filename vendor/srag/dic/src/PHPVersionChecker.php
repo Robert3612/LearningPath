@@ -1,13 +1,13 @@
 <?php
 
-namespace srag\DIC\Learningpath;
+namespace srag\DIC\LearningPath;
 
 use Throwable;
 
 /**
  * Class PHPVersionChecker
  *
- * @package srag\DIC\Learningpath
+ * @package srag\DIC\LearningPath
  */
 final class PHPVersionChecker
 {

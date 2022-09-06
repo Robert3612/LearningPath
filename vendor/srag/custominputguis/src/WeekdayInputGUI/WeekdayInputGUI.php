@@ -1,18 +1,18 @@
 <?php
 
-namespace srag\CustomInputGUIs\Learningpath\WeekdayInputGUI;
+namespace srag\CustomInputGUIs\LearningPath\WeekdayInputGUI;
 
 use ilCalendarUtil;
 use ilFormPropertyGUI;
 use ilTableFilterItem;
 use ilTemplate;
-use srag\CustomInputGUIs\Learningpath\Template\Template;
-use srag\DIC\Learningpath\DICTrait;
+use srag\CustomInputGUIs\LearningPath\Template\Template;
+use srag\DIC\LearningPath\DICTrait;
 
 /**
  * Class WeekdayInputGUI
  *
- * @package srag\CustomInputGUIs\Learningpath\WeekdayInputGUI
+ * @package srag\CustomInputGUIs\LearningPath\WeekdayInputGUI
  */
 class WeekdayInputGUI extends ilFormPropertyGUI implements ilTableFilterItem
 {
