@@ -1,0 +1,28 @@
+obj_xlpa#:#Learningpath
+obj_xlpa_duplicate#:#Learningpath kopieren
+objs_xlpa#:#Learningpath's
+objs_xlpa_duplicate#:#Learningpath's kopieren
+rbac_create_xlpa#:#Learningpath anlegen
+rep_robj_xlpa_obj_xlpa#:#Learningpath
+xlpa_add#:#Hinzufügen
+xlpa_delete#:#Löschen
+xlpa_edit_permission#:#Rechte bearbeiten
+xlpa_new#:#Learningpath anlegen
+xlpa_read#:#Lesen
+xlpa_visible#:#Sichtbar
+xlpa_write#:#Bearbeiten
+config_configuration#:#Konfiguration
+config_configuration_saved#:#Konfiguration gespeichert
+config_save#:#Speichern
+object_manage_contents#:#Bearbeiten
+object_offline#:#Offline
+object_permission_denied#:#Zugriff verweigert
+object_show_contents#:#Inhalte
+object_status#:#Status
+settings_cancel#:#Abbrechen
+settings_description#:#Beschreibung
+settings_online#:#Online
+settings_save#:#Speichern
+settings_saved#:#Einstellungen gespeichert
+settings_settings#:#Einstellungen
+settings_title#:#Titel
