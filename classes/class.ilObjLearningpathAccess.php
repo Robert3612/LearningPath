@@ -15,7 +15,7 @@ use srag\DIC\LearningPath\DICTrait;
  */
 class ilObjLearningPathAccess extends ilObjectPluginAccess
 {
-
+a
     use DICTrait;
     use LearningPathTrait;
 

@@ -14,7 +14,7 @@ use srag\DIC\LearningPath\DICTrait;
  * @author Robert <support@fluxlabs.ch>
  * @author fluxlabs <support@fluxlabs.ch>
  */
-class ilObjLearningPath extends ilObjectPlugin
+class ilObjLearningPath extends ilObjectPlugina
 {
 
     use DICTrait;

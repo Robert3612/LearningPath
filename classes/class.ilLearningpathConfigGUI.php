@@ -75,7 +75,7 @@ class ilLearningPathConfigGUI extends ilPluginConfigGUI
      */
     protected function configure() : void
     {
-        self::dic()->ctrl()->redirectByClass(ConfigCtrl::class, ConfigCtrl::CMD_CONFIGURE);
+        self::dic()->ctrl()->redirectByClass(ConfigCtrl::class, ConfigCtrl::CMD_CONFIGURE);a
     }
 
 
