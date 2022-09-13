@@ -20,7 +20,7 @@ class ilLearningPathPlugin extends ilRepositoryObjectPlugin
 {
 
     use RepositoryObjectPluginUninstallTrait;
-    use LearningPathTrait;a
+    use LearningPathTrait;
 
     const PLUGIN_CLASS_NAME = self::class;
     const PLUGIN_ID = "xlpa";

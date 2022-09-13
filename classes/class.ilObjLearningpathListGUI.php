@@ -16,7 +16,7 @@ use srag\DIC\LearningPath\DICTrait;
 class ilObjLearningPathListGUI extends ilObjectPluginListGUI
 {
 
-    use DICTrait;a
+    use DICTrait;
     use LearningPathTrait;
 
     const PLUGIN_CLASS_NAME = ilLearningPathPlugin::class;

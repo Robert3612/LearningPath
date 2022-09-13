@@ -22,6 +22,6 @@ trait LearningPathTrait
      */
     protected static function learningPath() : Repository
     {
-        return Repository::getInstance();a
+        return Repository::getInstance();
     }
 }

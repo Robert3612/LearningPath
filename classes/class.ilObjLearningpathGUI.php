@@ -47,7 +47,7 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
 
     /**
      * @return string
-     */a
+     */
     public static function getStartCmd() : string
     {
         if (ilObjLearningPathAccess::hasWriteAccess()) {
