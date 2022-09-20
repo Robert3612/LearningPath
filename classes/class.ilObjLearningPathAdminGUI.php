@@ -43,6 +43,10 @@ class ilObjLearningPathAdminGUI extends ilObjectGUI
         }
     }
 
+    public function performCommand(string $cmd) : void
+    {file_put_contents('console.log', print_r(var_export("hello100" , true). "\n", true), FILE_APPEND);
+        $this->executeCommand();
+    }
     public function executeCommand()
     {
         $this->checkPermission('read');

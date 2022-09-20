@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 require_once __DIR__ . "/../vendor/autoload.php";
 
 use srag\Plugins\LearningPath\Utils\LearningPathTrait;
@@ -26,11 +26,10 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
 
     use DICTrait;
     use LearningPathTrait;
-
     const CMD_VIEW = "view";
     const CMD_LEARNER_VIEW = "learnerView";
     const CMD_CONTENT = "manageContent";
-
+    public $ref;
     const CMD_MEMBERS = "members";
     const CMD_MANAGE_MEMBERS = "participants";
     const CMD_MEMBERS_GALLERY = "jump2UsersGallery";
@@ -70,7 +69,7 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
     const TAB_MEMBERS = "members";
     const TAB_LP = "learning_progress";
     const TAB_EXPORT = "export";
-
+    const LANG_MODULE_OBJECT = "object";
     const MAIL_ALLOWED_ALL = 1;
     const MAIL_ALLOWED_TUTORS = 2;
 
@@ -87,10 +86,10 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
      * @return string
      */
 
-    /**public static function _goto(	string 	$a_target	) : void
+    public static function _goto($a_target) : void
     {
         global $DIC;
-
+        file_put_contents('console.log', print_r(var_export("hallo1" , true). "\n", true), FILE_APPEND);
         $request = $DIC->http()->request();
         $lng = $DIC->language();
         $err = $DIC['ilErr'];
@@ -128,10 +127,12 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
 
             self::forwardByClass(ilRepositoryGUI::class, [ilRepositoryGUI::class], ['ref_id' => ROOT_FOLDER_ID]);
         }
-    }**/
+    }
+
 
     protected static function isAccessible(int $id) : bool
     {
+        file_put_contents('console.log', print_r(var_export("hello3" , true). "\n", true), FILE_APPEND);
         return $id > 0 && (
                 self::hasAccess(self::ACCESS_READ, $id) ||
                 self::hasAccess(self::ACCESS_VISIBLE, $id) ||
@@ -141,12 +142,14 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
 
     protected static function hasAccess(string $mode, int $id) : bool
     {
+        file_put_contents('console.log', print_r(var_export("hello4" , true). "\n", true), FILE_APPEND);
         global $DIC;
         return $DIC->access()->checkAccess($mode, '', $id);
     }
 
     protected static function forwardByClass(string $base_class, array $classes, array $params, string $cmd = '')
     {
+        file_put_contents('console.log', print_r(var_export("hello5" , true). "\n", true), FILE_APPEND);
         global $DIC;
         $ctrl = $DIC->ctrl();
         $target_class = end($classes);
@@ -163,8 +166,14 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
 
     public function __construct()
     {
-        $this->ref_id = (int) $_GET['ref_id'];
-        parent::__construct([], $this->ref_id, true, false);
+        file_put_contents('console.log', print_r(var_export("hello6" , true). "\n", true), FILE_APPEND);
+        $this->ref = (int) $_GET['ref_id'];
+        $this->ref_id =  $this->ref;
+        file_put_contents('console.log',  "hallo". "\n",  FILE_APPEND);
+        file_put_contents('console.log',  $_GET['ref_id']. "\n",  FILE_APPEND);
+        file_put_contents('console.log',  $this->ref_id. "\n",  FILE_APPEND);
+        file_put_contents('console.log',  $this->ref. "\n",  FILE_APPEND);
+        parent::__construct([], $this->ref, true, false);
 
         $this->obj_type = ilObjLearningPath::OBJ_TYPE;
 
@@ -198,6 +207,7 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
 
     protected function recordLearningPathRead()
     {
+        file_put_contents('console.log', print_r(var_export("hello7" , true). "\n", true), FILE_APPEND);
         ilChangeEvent::_recordReadEvent(
             $this->object->getType(),
             $this->object->getRefId(),
@@ -208,6 +218,7 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
 
     public static function getStartCmd() : string
     {
+        file_put_contents('console.log', print_r(var_export("hello8" , true). "\n", true), FILE_APPEND);
         if (ilObjLearningPathAccess::hasWriteAccess()) {
             return self::CMD_CONTENT;
         } else {
@@ -222,7 +233,8 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
      * @param ilObjLearningPath $a_new_object
      */
     public function afterSave(/*ilObjLearningPath*/ ilObject $a_new_object) : void
-    {$new_object=null;
+    {
+        file_put_contents('console.log', print_r(var_export("hello9" , true). "\n", true), FILE_APPEND);
         $participant = new ilLearningPathParticipants(
             (int) $new_object->getId(),
             $this->log,
@@ -257,6 +269,7 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
      */
     public function getAfterCreationCmd() : string
     {
+        file_put_contents('console.log', print_r(var_export("hello10" , true). "\n", true), FILE_APPEND);
         return self::getStartCmd();
     }
 
@@ -266,6 +279,7 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
      */
     public function getStandardCmd() : string
     {
+        file_put_contents('console.log', print_r(var_export("hello11" , true). "\n", true), FILE_APPEND);
         return self::getStartCmd();
     }
 
@@ -274,7 +288,7 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
      * @inheritDoc
      */
     public final function getType() : string
-    {
+    {file_put_contents('console.log', print_r(var_export("hello12" , true). "\n", true), FILE_APPEND);
         return ilLearningPathPlugin::PLUGIN_ID;
     }
 
@@ -284,8 +298,9 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
      */
     public function initCreateForm(/*string*/ $a_new_type) : ilPropertyFormGUI
     {
+        file_put_contents('console.log', print_r(var_export("hello13" , true). "\n", true), FILE_APPEND);
         $form = parent::initCreateForm($a_new_type);
-
+        file_put_contents('console.log', print_r(var_export("hello13-2" , true). "\n", true), FILE_APPEND);
         return $form;
     }
 
@@ -293,7 +308,7 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
     /**
      * @param string $cmd
      */
-    public function performCommand(string $cmd) : void
+    public function executeCommand()
     {
         $next_class = $this->ctrl->getNextClass($this);
         $cmd = $this->ctrl->getCmd();
@@ -306,7 +321,7 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
         //see: $this::getAdditionalWhitelistTypes
 
         $in_player = (
-            $next_class === 'ilobjlearningPathlearnergui'
+            $next_class === 'ilobjlearningsequencelearnergui'
             && $cmd === 'view'
         );
 
@@ -323,16 +338,16 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
             case "ilpermissiongui":
                 $this->permissions($cmd);
                 break;
-            case "ilobjlearningPathsettingsgui":
+            case "ilobjlearningsequencesettingsgui":
                 $this->settings($cmd);
                 break;
-            case "ilobjlearningPathcontentgui":
+            case "ilobjlearningsequencecontentgui":
                 $this->manageContent($cmd);
                 break;
-            case "ilobjlearningPathlearnergui":
+            case "ilobjlearningsequencelearnergui":
                 $this->learnerView($cmd);
                 break;
-            case "illearningPathmembershipgui":
+            case "illearningsequencemembershipgui":
                 $this->manage_members($cmd);
                 break;
             case 'ilmailmembersearchgui':
@@ -434,31 +449,37 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
                         break;
 
                     default:
-                        throw new ilException("ilObjLearningPathGUI: Invalid command '$cmd'");
+                        throw new ilException("ilObjLearningSequenceGUI: Invalid command '$cmd'");
                 }
                 break;
             default:
-                throw new ilException("ilObjLearningPathGUI: Can't forward to next class $next_class");
+                throw new ilException("ilObjLearningSequenceGUI: Can't forward to next class $next_class");
         }
 
         if (!$in_player) {
             $this->addHeaderAction();
         }
     }
+    public function performCommand(string $cmd) : void
+    {file_put_contents('console.log', print_r(var_export("hello14" , true). "\n", true), FILE_APPEND);
+        $this->executeCommand();
+    }
 
     public function addToNavigationHistory()
     {
+        file_put_contents('console.log', print_r(var_export("hello15" , true). "\n", true), FILE_APPEND);
         if (
             !$this->getCreationMode() &&
-            $this->access->checkAccess('read', '', $this->ref_id)
+            $this->access->checkAccess('read', '', $this->ref)
         ) {
-            $link = ilLink::_getLink($this->ref_id, $this->obj_type);
-            $this->navigation_history->addItem($this->ref_id, $link, $this->obj_type);
+            $link = ilLink::_getLink($this->ref, $this->obj_type);
+            $this->navigation_history->addItem($this->ref, $link, $this->obj_type);
         }
     }
 
     protected function info(string $cmd = self::CMD_INFO)
     {
+        file_put_contents('console.log', print_r(var_export("hello16" , true). "\n", true), FILE_APPEND);
         $this->tabs->setTabActive(self::TAB_INFO);
         $this->ctrl->setCmdClass('ilinfoscreengui');
         $this->ctrl->setCmd($cmd);
@@ -468,6 +489,7 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
 
     protected function permissions(string $cmd = self::CMD_PERMISSIONS)
     {
+        file_put_contents('console.log', print_r(var_export("hello17" , true). "\n", true), FILE_APPEND);
         $this->tabs->setTabActive(self::TAB_PERMISSIONS);
         $perm_gui = new ilPermissionGUI($this);
         $this->ctrl->setCmd($cmd);
@@ -476,6 +498,7 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
 
     protected function settings(string $cmd = self::CMD_SETTINGS)
     {
+        file_put_contents('console.log', print_r(var_export("hello18" , true). "\n", true), FILE_APPEND);
         $this->tabs->activateTab(self::TAB_SETTINGS);
         $gui = new ilObjLearningPathSettingsGUI(
             $this->getObject(),
@@ -490,6 +513,7 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
 
     public function view()
     {
+        file_put_contents('console.log', print_r(var_export("hello19" , true). "\n", true), FILE_APPEND);
         $this->tabs->clearSubTabs();
         if ($this->checkAccess("write")) {
             $this->manageContent(self::CMD_CONTENT);
@@ -506,6 +530,7 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
 
     protected function manageContent(string $cmd = self::CMD_CONTENT)
     {
+        file_put_contents('console.log', print_r(var_export("hello20" , true). "\n", true), FILE_APPEND);
         $this->tabs->activateTab(self::TAB_CONTENT_MAIN);
         $this->addSubTabsForContent($cmd);
         $this->tabs->activateSubTab(self::TAB_MANAGE);
@@ -525,6 +550,7 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
 
     protected function learnerView(string $cmd = self::CMD_LEARNER_VIEW)
     {
+        file_put_contents('console.log', print_r(var_export("hello21" , true). "\n", true), FILE_APPEND);
         $this->tabs->activateTab(self::TAB_CONTENT_MAIN);
         $this->addSubTabsForContent($cmd);
         $this->tabs->activateSubTab(self::TAB_VIEW_CONTENT);
@@ -537,6 +563,7 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
 
     protected function members()
     {
+        file_put_contents('console.log', print_r(var_export("hello22" , true). "\n", true), FILE_APPEND);
         $may_manage_members = $this->checkAccess("edit_members");
         $this->ctrl->setCmdClass('ilLearningPathMembershipGUI');
         if ($may_manage_members) {
@@ -548,6 +575,7 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
 
     protected function manage_members(string $cmd = self::CMD_MANAGE_MEMBERS)
     {
+        file_put_contents('console.log', print_r(var_export("hello23" , true). "\n", true), FILE_APPEND);
         $this->tabs->setTabActive(self::TAB_MEMBERS);
 
         $ms_gui = new ilLearningPathMembershipGUI(
@@ -569,6 +597,7 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
 
     protected function learningProgress(string $cmd = self::CMD_LP)
     {
+        file_put_contents('console.log', print_r(var_export("hello24" , true). "\n", true), FILE_APPEND);
         $this->tabs->setTabActive(self::TAB_LP);
 
         $for_user = $this->user->getId();
@@ -593,6 +622,7 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
 
     protected function export()
     {
+        file_put_contents('console.log', print_r(var_export("hello25" , true). "\n", true), FILE_APPEND);
         $this->tabs->setTabActive(self::TAB_EXPORT);
         $gui = new ilExportGUI($this);
         $gui->addFormat("xml");
@@ -602,21 +632,25 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
 
     protected function initDidacticTemplate(ilPropertyFormGUI $form)
     {
+        file_put_contents('console.log', print_r(var_export("hello26" , true). "\n", true), FILE_APPEND);
         return $form;
     }
 
     public function create()
     {
+        file_put_contents('console.log', print_r(var_export("hello27" , true). "\n", true), FILE_APPEND);
         parent::createObject();
     }
 
     public function save()
     {
+        file_put_contents('console.log', print_r(var_export("hello28" , true). "\n", true), FILE_APPEND);
         parent::saveObject();
     }
 
     public function unparticipate()
     {
+        file_put_contents('console.log', print_r(var_export("hello29" , true). "\n", true), FILE_APPEND);
         if ($this->checkAccess('unparticipate')) {
             $usr_id = (int) $this->user->getId();
             $this->getObject()->getLSRoles()->leave($usr_id);
@@ -626,6 +660,7 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
 
     protected function removeMember(int $usr_id)
     {
+        file_put_contents('console.log', print_r(var_export("hello30" , true). "\n", true), FILE_APPEND);
         $this->ls_object->leave($usr_id);
     }
 
@@ -636,7 +671,7 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
      */
     protected function afterConstructor() : void
     {
-
+        file_put_contents('console.log', print_r(var_export("hello31" , true). "\n", true), FILE_APPEND);
     }
 
 
@@ -652,6 +687,7 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
      */
     protected function setTabs() : void
     {
+        file_put_contents('console.log', print_r(var_export("hello32" , true). "\n", true), FILE_APPEND);
 
         if ($this->checkAccess("read")) {
             $this->tabs->addTab(
@@ -720,11 +756,13 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
 
     public function renderObject()
     {
+        file_put_contents('console.log', print_r(var_export("hello33" , true). "\n", true), FILE_APPEND);
         // disables this method in ilContainerGUI
     }
 
     protected function addSubTabsForContent()
     {
+        file_put_contents('console.log', print_r(var_export("hello34" , true). "\n", true), FILE_APPEND);
         $this->tabs->addSubTab(
             self::TAB_VIEW_CONTENT,
             $this->lng->txt(self::TAB_VIEW_CONTENT),
@@ -742,11 +780,13 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
 
     protected function checkAccess($which) : bool
     {
-        return $this->access->checkAccess($which, "", $this->ref_id);
+        file_put_contents('console.log', print_r(var_export("hello35" , true). "\n", true), FILE_APPEND);
+        return $this->access->checkAccess($which, "", $this->ref);
     }
 
     protected function checkLPAccess()
     {
+        file_put_contents('console.log', print_r(var_export("hello36" , true). "\n", true), FILE_APPEND);
         $ref_id = $this->getObject()->getRefId();
         $is_participant = ilLearningPathParticipants::_isParticipant($ref_id, $this->user->getId());
 
@@ -758,6 +798,7 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
 
     protected function getLinkTarget(string $cmd) : string
     {
+        file_put_contents('console.log', print_r(var_export("hello37" , true). "\n", true), FILE_APPEND);
         $class = $this->getClassForTabs($cmd);
         $class_path = [
             strtolower('ilObjLearningPathGUI'),
@@ -768,6 +809,7 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
 
     protected function getClassForTabs(string $cmd) : string
     {
+        file_put_contents('console.log', print_r(var_export("hello38" , true). "\n", true), FILE_APPEND);
         switch ($cmd) {
             case self::CMD_CONTENT:
                 return 'ilObjLearningPathContentGUI';
@@ -788,6 +830,7 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
 
     public function createMailSignature()
     {
+        file_put_contents('console.log', print_r(var_export("hello39" , true). "\n", true), FILE_APPEND);
         $link = chr(13) . chr(10) . chr(13) . chr(10);
         $link .= $this->lng->txt('lso_mail_permanent_link');
         $link .= chr(13) . chr(10) . chr(13) . chr(10);
@@ -797,9 +840,13 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
     }
 
     public function getObject()
-    {file_put_contents('console.log', print_r(var_export(reset($this->ref_id), true) . "\n", true), FILE_APPEND);
+    {   file_put_contents('console.log', print_r(var_export("hello40" , true). "\n", true), FILE_APPEND);
+        file_put_contents('console.log', print_r(var_export("hello2" , true). "\n", true), FILE_APPEND);
+        file_put_contents('console.log', print_r(var_export($this->ref_id , true). "\n", true), FILE_APPEND);
+        file_put_contents('console.log', print_r(var_export($this->ref , true). "\n", true), FILE_APPEND);
         if ($this->object === null) {
-            $this->object = ilObjLearningPath::getInstanceByRefId($this->ref_id);
+            $this->object = ilObjLearningPath::getInstanceByRefId($this->ref);
+
         }
 
         return $this->object;
@@ -807,6 +854,7 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
 
     protected function getTrackingObject() : ilObjUserTracking
     {
+        file_put_contents('console.log', print_r(var_export("hello41" , true). "\n", true), FILE_APPEND);
         return new ilObjUserTracking();
     }
 
@@ -815,6 +863,7 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
      */
     public function getLocalRoles() : array
     {
+        file_put_contents('console.log', print_r(var_export("hello42" , true). "\n", true), FILE_APPEND);
         $local_roles = $this->object->getLocalLearningPathRoles(false);
         $lso_member = $this->object->getDefaultMemberRole();
         $lso_roles = array();
@@ -836,6 +885,7 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
      */
     protected function getAdditionalWhitelistTypes() : array
     {
+        file_put_contents('console.log', print_r(var_export("hello43" , true). "\n", true), FILE_APPEND);
         $types = array_filter(
             array_keys($this->obj_definition->getSubObjects('lso', false)),
             function ($type) {
@@ -848,6 +898,7 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
 
     public function addCustomData($a_data)
     {
+        file_put_contents('console.log', print_r(var_export("hello44" , true). "\n", true), FILE_APPEND);
         $res_data = array();
         foreach ($a_data as $usr_id => $user_data) {
             $res_data[$usr_id] = $user_data;

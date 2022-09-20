@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 require_once __DIR__ . "/../vendor/autoload.php";
 
 use srag\Plugins\LearningPath\Utils\LearningPathTrait;
@@ -68,11 +68,7 @@ class ilObjLearningPathListGUI extends ilObjectPluginListGUI
         return $props;
     }
 
-
-    /**
-     * @inheritDoc
-     */
-    public function initCommands() : array
+    public function init()
     {
         $this->static_link_enabled = true;
         $this->delete_enabled = true;
@@ -85,6 +81,25 @@ class ilObjLearningPathListGUI extends ilObjectPluginListGUI
         $this->type = ilObjLearningPath::OBJ_TYPE;
         $this->commands = ilObjLearningPathAccess::_getCommands();
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function initCommands() : array
+    {
+        $this->init();
+
+        $commands = [
+            [
+                "permission" => "read",
+                "cmd"        => ilObjTestGUI::getStartCmd(),
+                "default"    => true
+            ]
+        ];
+
+        return $commands;
+    }
+
 
 
     /**

@@ -96,7 +96,7 @@ class ilDashboardLearningPathGUI
             return '';
         }
 
-        $std_list = $this->factory->panel()->listing()->standard($this->lng->txt('dash_learningPaths'), array(
+        $std_list = $this->factory->panel()->listing()->standard($this->lng->txt('dash_learningpaths'), array(
             $this->factory->item()->group(
                 '',
                 $items
