@@ -27,9 +27,20 @@ class ilObjLearningPathListGUI extends ilObjectPluginListGUI
      *
      * @param int $a_context
      */
-    public function __construct(/*int*/ $a_context = self::CONTEXT_REPOSITORY)
+    public function __construct()
     {
-        parent::__construct($a_context);
+        parent::__construct();
+
+        $dic = $this->getDIC();
+        $obj_type = ilObjLearningPath::OBJ_TYPE;
+        $this->lng = $dic->language();
+        $this->lng->loadLanguageModule($obj_type);
+    }
+
+    protected function getDIC() : ILIAS\DI\Container
+    {
+        global $DIC;
+        return $DIC;
     }
 
 
@@ -47,14 +58,11 @@ class ilObjLearningPathListGUI extends ilObjectPluginListGUI
      */
     public function getProperties() : array
     {
-        $props = [];
+        $props = parent::getProperties();
 
-        if (ilObjLearningPathAccess::_isOffline($this->obj_id)) {
-            $props[] = [
-                "alert"    => true,
-                "property" => self::plugin()->translate("status", ilObjLearningPathGUI::LANG_MODULE_OBJECT),
-                "value"    => self::plugin()->translate("offline", ilObjLearningPathGUI::LANG_MODULE_OBJECT)
-            ];
+        if (ilObjLearningPathAccess::isOffline($this->ref_id)) {
+            $props[] = array("alert" => true, "property" => $this->lng->txt("status"),
+                "value" => $this->lng->txt("offline"));
         }
 
         return $props;
@@ -66,40 +74,16 @@ class ilObjLearningPathListGUI extends ilObjectPluginListGUI
      */
     public function initCommands() : array
     {
-        $this->commands_enabled = true;
-        $this->copy_enabled = true;
-        $this->cut_enabled = true;
+        $this->static_link_enabled = true;
         $this->delete_enabled = true;
-        $this->description_enabled = true;
-        $this->notice_properties_enabled = true;
-        $this->properties_enabled = true;
-
-        $this->comments_enabled = false;
-        $this->comments_settings_enabled = false;
-        $this->expand_enabled = false;
-        $this->info_screen_enabled = false;
-        $this->link_enabled = false;
-        $this->notes_enabled = false;
-        $this->payment_enabled = false;
-        $this->preconditions_enabled = false;
-        $this->rating_enabled = false;
-        $this->rating_categories_enabled = false;
-        $this->repository_transfer_enabled = false;
-        $this->search_fragment_enabled = false;
-        $this->static_link_enabled = false;
+        $this->cut_enabled = true;
+        $this->info_screen_enabled = true;
+        $this->copy_enabled = true;
         $this->subscribe_enabled = false;
-        $this->tags_enabled = false;
-        $this->timings_enabled = false;
-
-        $commands = [
-            [
-                "permission" => "read",
-                "cmd"        => ilObjLearningPathGUI::getStartCmd(),
-                "default"    => true
-            ]
-        ];
-
-        return $commands;
+        $this->link_enabled = true;
+        $this->gui_class_name = "ilobjlearningpathgui";
+        $this->type = ilObjLearningPath::OBJ_TYPE;
+        $this->commands = ilObjLearningPathAccess::_getCommands();
     }
 
 

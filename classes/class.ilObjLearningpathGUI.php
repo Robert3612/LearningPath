@@ -27,18 +27,56 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
     use DICTrait;
     use LearningPathTrait;
 
-    const CMD_MANAGE_CONTENTS = "manageContents";
-    const CMD_PERMISSIONS = "perm";
+    const CMD_VIEW = "view";
+    const CMD_LEARNER_VIEW = "learnerView";
+    const CMD_CONTENT = "manageContent";
+
+    const CMD_MEMBERS = "members";
+    const CMD_MANAGE_MEMBERS = "participants";
+    const CMD_MEMBERS_GALLERY = "jump2UsersGallery";
+
+    const CMD_INFO = "showSummary";
+    const CMD_INFO_SCREEN = "infoScreen";
     const CMD_SETTINGS = "settings";
-    const CMD_SETTINGS_STORE = "settingsStore";
-    const CMD_SHOW_CONTENTS = "showContents";
-    const LANG_MODULE_OBJECT = "object";
-    const LANG_MODULE_SETTINGS = "settings";
-    const PLUGIN_CLASS_NAME = ilLearningPathPlugin::class;
-    const TAB_CONTENTS = "contents";
-    const TAB_PERMISSIONS = "perm_settings";
+    const CMD_PERMISSIONS = "perm";
+    const CMD_LP = "learningProgress";
+    const CMD_EXPORT = "export";
+    const CMD_IMPORT = "importFile";
+    const CMD_CREATE = "create";
+    const CMD_SAVE = "save";
+    const CMD_CANCEL = "cancel";
+    const CMD_UNPARTICIPATE = "unparticipate";
+    const CMD_ADD_TO_DESK = "addToDesk";
+    const CMD_REMOVE_FROM_DESK = "removeFromDesk";
+    const CMD_LINK = "link";
+    const CMD_CANCEL_LINK = "cancelMoveLink";
+    const CMD_CUT = "cut";
+    const CMD_CANCEL_CUT = "cancelCut";
+    const CMD_CUT_SHOWTREE = "showPasteTree";
+    const CMD_CUT_CLIPBOARD = "keepObjectsInClipboard";
+    const CMD_DELETE = "delete";
+    const CMD_CANCEL_DELETE = "cancelDelete";
+    const CMD_DELETE_CONFIRMED = "confirmedDelete";
+    const CMD_PERFORM_PASTE = 'performPasteIntoMultipleObjects';
+    const CMD_SHOW_TRASH = 'trash';
+    const CMD_UNDELETE = 'undelete';
+
+    const TAB_VIEW_CONTENT = "view_content";
+    const TAB_MANAGE = "manage";
+    const TAB_CONTENT_MAIN = "manage_content_maintab";
+    const TAB_INFO = "show_summary";
     const TAB_SETTINGS = "settings";
-    const TAB_SHOW_CONTENTS = "show_contents";
+    const TAB_PERMISSIONS = "perm_settings";
+    const TAB_MEMBERS = "members";
+    const TAB_LP = "learning_progress";
+    const TAB_EXPORT = "export";
+
+    const MAIL_ALLOWED_ALL = 1;
+    const MAIL_ALLOWED_TUTORS = 2;
+
+    const ACCESS_READ = 'read';
+    const ACCESS_VISIBLE = 'visible';
+
     /**
      * @var ilObjLearningPath
      */
@@ -48,12 +86,132 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
     /**
      * @return string
      */
+
+    /**public static function _goto(	string 	$a_target	) : void
+    {
+        global $DIC;
+
+        $request = $DIC->http()->request();
+        $lng = $DIC->language();
+        $err = $DIC['ilErr'];
+
+        $targetParameters = explode('_', $a_target);
+        $id = (int) $targetParameters[0];
+
+        if (!self::isAccessible($id)) {
+            $err->raiseError($lng->txt('msg_no_perm_read'), $err->FATAL);
+        }
+
+        if (self::hasAccess(self::ACCESS_READ, $id)) {
+            $params = ['ref_id' => $id];
+
+            if (isset($request->getQueryParams()['gotolp'])) {
+                $params['gotolp'] = 1;
+            }
+
+            self::forwardByClass(
+                ilRepositoryGUI::class,
+                [ilRepositoryGUI::class, ilObjLearningPathGUI::class],
+                $params,
+                self::CMD_VIEW
+            );
+        }
+        if (self::hasAccess(self::ACCESS_VISIBLE, $id)) {
+            ilObjectGUI::_gotoRepositoryNode($a_target, 'infoScreen');
+        }
+
+        if (self::hasAccess(self::ACCESS_READ, ROOT_FOLDER_ID)) {
+            ilUtil::sendInfo(sprintf(
+                $lng->txt('msg_no_perm_read_item'),
+                ilObject::_lookupTitle(ilObject::_lookupObjId($id))
+            ), true);
+
+            self::forwardByClass(ilRepositoryGUI::class, [ilRepositoryGUI::class], ['ref_id' => ROOT_FOLDER_ID]);
+        }
+    }**/
+
+    protected static function isAccessible(int $id) : bool
+    {
+        return $id > 0 && (
+                self::hasAccess(self::ACCESS_READ, $id) ||
+                self::hasAccess(self::ACCESS_VISIBLE, $id) ||
+                self::hasAccess(self::ACCESS_READ, ROOT_FOLDER_ID)
+            );
+    }
+
+    protected static function hasAccess(string $mode, int $id) : bool
+    {
+        global $DIC;
+        return $DIC->access()->checkAccess($mode, '', $id);
+    }
+
+    protected static function forwardByClass(string $base_class, array $classes, array $params, string $cmd = '')
+    {
+        global $DIC;
+        $ctrl = $DIC->ctrl();
+        $target_class = end($classes);
+
+        $ctrl->setTargetScript('ilias.php');
+        $ctrl->initBaseClass($base_class);
+
+        foreach ($params as $key => $value) {
+            $ctrl->setParameterByClass($target_class, $key, $value);
+        }
+
+        $ctrl->redirectByClass($classes, $cmd);
+    }
+
+    public function __construct()
+    {
+        $this->ref_id = (int) $_GET['ref_id'];
+        parent::__construct([], $this->ref_id, true, false);
+
+        $this->obj_type = ilObjLearningPath::OBJ_TYPE;
+
+        global $DIC;
+        $this->ctrl = $DIC['ilCtrl'];
+        $this->lng = $DIC['lng'];
+        $this->user = $DIC['ilUser'];
+        $this->tabs = $DIC['ilTabs'];
+        $this->toolbar = $DIC['ilToolbar'];
+        $this->help = $DIC['ilHelp'];
+        $this->settings = $DIC['ilSetting'];
+        $this->access = $DIC['ilAccess'];
+        $this->rbac_review = $DIC['rbacreview'];
+        $this->ui_factory = $DIC['ui.factory'];
+        $this->ui_renderer = $DIC['ui.renderer'];
+
+        $this->log = $DIC["ilLoggerFactory"]->getRootLogger();
+        $this->app_event_handler = $DIC['ilAppEventHandler'];
+        $this->navigation_history = $DIC['ilNavigationHistory'];
+        $this->obj_definition = $DIC['objDefinition'];
+        $this->tpl = $DIC["tpl"];
+        $this->obj_service = $DIC->object();
+        $this->toolbar = $DIC['ilToolbar'];
+
+        $this->help->setScreenIdComponent($this->obj_type);
+        $this->lng->loadLanguageModule($this->obj_type);
+
+        $this->object = $this->getObject();
+        $this->data_factory = new \ILIAS\Data\Factory();
+    }
+
+    protected function recordLearningPathRead()
+    {
+        ilChangeEvent::_recordReadEvent(
+            $this->object->getType(),
+            $this->object->getRefId(),
+            $this->object->getId(),
+            $this->user->getId()
+        );
+    }
+
     public static function getStartCmd() : string
     {
         if (ilObjLearningPathAccess::hasWriteAccess()) {
-            return self::CMD_MANAGE_CONTENTS;
+            return self::CMD_CONTENT;
         } else {
-            return self::CMD_SHOW_CONTENTS;
+            return self::TAB_VIEW_CONTENT;
         }
     }
 
@@ -64,8 +222,33 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
      * @param ilObjLearningPath $a_new_object
      */
     public function afterSave(/*ilObjLearningPath*/ ilObject $a_new_object) : void
-    {
-        parent::afterSave($a_new_object);
+    {$new_object=null;
+        $participant = new ilLearningPathParticipants(
+            (int) $new_object->getId(),
+            $this->log,
+            $this->app_event_handler,
+            $this->settings
+        );
+
+        $participant->add($this->user->getId(), IL_LSO_ADMIN);
+        $participant->updateNotification($this->user->getId(), $this->settings->get('mail_lso_admin_notification', true));
+
+
+        $settings = new \ilContainerSortingSettings($new_object->getId());
+        $settings->setSortMode(\ilContainer::SORT_MANUAL);
+        $settings->setSortDirection(\ilContainer::SORT_DIRECTION_ASC);
+        $settings->setSortNewItemsOrder(\ilContainer::SORT_NEW_ITEMS_ORDER_CREATION);
+        $settings->setSortNewItemsPosition(\ilContainer::SORT_NEW_ITEMS_POSITION_BOTTOM);
+        $settings->save();
+
+        ilUtil::sendSuccess($this->lng->txt('object_added'), true);
+        $this->ctrl->setParameter($this, "ref_id", $new_object->getRefId());
+        ilUtil::redirect(
+            $this->getReturnLocation(
+                "save",
+                $this->ctrl->getLinkTarget($this, self::CMD_SETTINGS, "", false, false)
+            )
+        );
     }
 
 
@@ -112,42 +295,340 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
      */
     public function performCommand(string $cmd) : void
     {
-        self::dic()->help()->setScreenIdComponent(ilLearningPathPlugin::PLUGIN_ID);
-        self::dic()->ui()->mainTemplate()->setPermanentLink(ilLearningPathPlugin::PLUGIN_ID, $this->object->getRefId());
+        $next_class = $this->ctrl->getNextClass($this);
+        $cmd = $this->ctrl->getCmd();
+        $tpl = $this->tpl;
 
-        $next_class = self::dic()->ctrl()->getNextClass($this);
+        parent::prepareOutput();
+        $this->addToNavigationHistory();
+        //showRepTree is from containerGUI;
+        //LSO will attach allowed subitems to whitelist
+        //see: $this::getAdditionalWhitelistTypes
 
-        switch (strtolower($next_class)) {
-            default:
+        $in_player = (
+            $next_class === 'ilobjlearningPathlearnergui'
+            && $cmd === 'view'
+        );
+
+        $tpl->setPermanentLink("lso", $this->ref_id);
+
+        switch ($next_class) {
+            case "ilcommonactiondispatchergui":
+                $gui = ilCommonActionDispatcherGUI::getInstanceFromAjaxCall();
+                $this->ctrl->forwardCommand($gui);
+                break;
+            case "ilinfoscreengui":
+                $this->info($cmd);
+                break;
+            case "ilpermissiongui":
+                $this->permissions($cmd);
+                break;
+            case "ilobjlearningPathsettingsgui":
+                $this->settings($cmd);
+                break;
+            case "ilobjlearningPathcontentgui":
+                $this->manageContent($cmd);
+                break;
+            case "ilobjlearningPathlearnergui":
+                $this->learnerView($cmd);
+                break;
+            case "illearningPathmembershipgui":
+                $this->manage_members($cmd);
+                break;
+            case 'ilmailmembersearchgui':
+                $this->mail();
+                break;
+            case 'illearningprogressgui':
+                $this->learningProgress($cmd);
+                break;
+            case 'ilexportgui':
+                $this->export();
+                break;
+            case 'ilobjectcopygui':
+                $cp = new ilObjectCopyGUI($this);
+                $cp->setType('lso');
+                $this->ctrl->forwardCommand($cp);
+                break;
+            case 'ilobjindividualassessmentgui':
+                $struct = ['ilrepositorygui','ilobjindividualassessmentgui'];
+                if ($cmd === 'edit') {
+                    $struct[] = 'ilindividualassessmentsettingsgui';
+                }
+                $this->ctrl->redirectByClass($struct, $cmd);
+                break;
+            case 'ilobjtestgui':
+                $struct = ['ilrepositorygui','ilobjtestgui'];
+                $this->ctrl->redirectByClass($struct, $cmd);
+                break;
+
+            case false:
+                if ($cmd === '') {
+                    $cmd = self::CMD_VIEW;
+                }
+
                 switch ($cmd) {
-                    case self::CMD_SHOW_CONTENTS:
-                        // Read commands
-                        if (!ilObjLearningPathAccess::hasReadAccess()) {
-                            ilObjLearningPathAccess::redirectNonAccess(ilRepositoryGUI::class);
+                    case self::CMD_IMPORT:
+                        $this->importFileObject();
+                        break;
+                    case self::CMD_INFO:
+                    case self::CMD_INFO_SCREEN:
+                        $this->info();
+                        break;
+                    case self::CMD_VIEW:
+                    case self::CMD_LEARNER_VIEW:
+                    case self::CMD_CONTENT:
+                    case self::CMD_MEMBERS:
+                    case self::CMD_SETTINGS:
+                    case self::CMD_SAVE:
+                    case self::CMD_CREATE:
+                    case self::CMD_LP:
+                    case self::CMD_UNPARTICIPATE:
+                        $this->$cmd();
+                        break;
+                    case self::CMD_CANCEL:
+                        if ($this->getCreationMode()) {
+                            $this->cancelCreation();
                         }
-
-                        $this->{$cmd}();
+                        break;
+                    case self::CMD_REMOVE_FROM_DESK:
+                        $this->removeFromDeskObject();
+                        $this->view();
+                        break;
+                    case self::CMD_ADD_TO_DESK:
+                        $this->addToDeskObject();
+                        $this->view();
+                        break;
+                    case self::CMD_CUT:
+                        $this->cutObject();
+                        break;
+                    case self::CMD_CUT_SHOWTREE:
+                        $this->showPasteTreeObject();
+                        break;
+                    case self::CMD_CUT_CLIPBOARD:
+                        $this->keepObjectsInClipboardObject();
+                        break;
+                    case self::CMD_LINK:
+                        $this->linkObject();
+                        break;
+                    case self::CMD_DELETE:
+                        $this->deleteObject();
+                        break;
+                    case self::CMD_DELETE_CONFIRMED:
+                        $this->confirmedDeleteObject();
+                        break;
+                    case self::CMD_PERFORM_PASTE:
+                        $this->performPasteIntoMultipleObjectsObject();
+                        break;
+                    case self::CMD_SHOW_TRASH:
+                        $this->trashObject();
+                        break;
+                    case self::CMD_UNDELETE:
+                        $this->undeleteObject();
                         break;
 
-                    case self::CMD_MANAGE_CONTENTS:
-                    case self::CMD_SETTINGS:
-                    case self::CMD_SETTINGS_STORE:
-                        // Write commands
-                        if (!ilObjLearningPathAccess::hasWriteAccess()) {
-                            ilObjLearningPathAccess::redirectNonAccess($this);
-                        }
-
-                        $this->{$cmd}();
+                    case self::CMD_CANCEL_CUT:
+                    case self::CMD_CANCEL_DELETE:
+                    case self::CMD_CANCEL_LINK:
+                        $cmd = self::CMD_CONTENT;
+                        $this->$cmd();
                         break;
 
                     default:
-                        // Unknown command
-                        ilObjLearningPathAccess::redirectNonAccess(ilRepositoryGUI::class);
-                        break;
+                        throw new ilException("ilObjLearningPathGUI: Invalid command '$cmd'");
                 }
                 break;
+            default:
+                throw new ilException("ilObjLearningPathGUI: Can't forward to next class $next_class");
+        }
+
+        if (!$in_player) {
+            $this->addHeaderAction();
         }
     }
+
+    public function addToNavigationHistory()
+    {
+        if (
+            !$this->getCreationMode() &&
+            $this->access->checkAccess('read', '', $this->ref_id)
+        ) {
+            $link = ilLink::_getLink($this->ref_id, $this->obj_type);
+            $this->navigation_history->addItem($this->ref_id, $link, $this->obj_type);
+        }
+    }
+
+    protected function info(string $cmd = self::CMD_INFO)
+    {
+        $this->tabs->setTabActive(self::TAB_INFO);
+        $this->ctrl->setCmdClass('ilinfoscreengui');
+        $this->ctrl->setCmd($cmd);
+        $info = new ilInfoScreenGUI($this);
+        $this->ctrl->forwardCommand($info);
+    }
+
+    protected function permissions(string $cmd = self::CMD_PERMISSIONS)
+    {
+        $this->tabs->setTabActive(self::TAB_PERMISSIONS);
+        $perm_gui = new ilPermissionGUI($this);
+        $this->ctrl->setCmd($cmd);
+        $this->ctrl->forwardCommand($perm_gui);
+    }
+
+    protected function settings(string $cmd = self::CMD_SETTINGS)
+    {
+        $this->tabs->activateTab(self::TAB_SETTINGS);
+        $gui = new ilObjLearningPathSettingsGUI(
+            $this->getObject(),
+            $this->ctrl,
+            $this->lng,
+            $this->tpl,
+            $this->obj_service
+        );
+        $this->ctrl->setCmd($cmd);
+        $this->ctrl->forwardCommand($gui);
+    }
+
+    public function view()
+    {
+        $this->tabs->clearSubTabs();
+        if ($this->checkAccess("write")) {
+            $this->manageContent(self::CMD_CONTENT);
+            return;
+        }
+        if ($this->checkAccess("read")) {
+            $this->learnerView(self::CMD_LEARNER_VIEW);
+            $this->recordLearningPathRead();
+            return;
+        }
+        $this->info(self::CMD_INFO);
+        $this->recordLearningPathRead();
+    }
+
+    protected function manageContent(string $cmd = self::CMD_CONTENT)
+    {
+        $this->tabs->activateTab(self::TAB_CONTENT_MAIN);
+        $this->addSubTabsForContent($cmd);
+        $this->tabs->activateSubTab(self::TAB_MANAGE);
+
+        $gui = new ilObjLearningPathContentGUI(
+            $this,
+            $this->ctrl,
+            $this->tpl,
+            $this->lng,
+            $this->access,
+            new ilConfirmationGUI(),
+            new LSItemOnlineStatus()
+        );
+        $this->ctrl->setCmd($cmd);
+        $this->ctrl->forwardCommand($gui);
+    }
+
+    protected function learnerView(string $cmd = self::CMD_LEARNER_VIEW)
+    {
+        $this->tabs->activateTab(self::TAB_CONTENT_MAIN);
+        $this->addSubTabsForContent($cmd);
+        $this->tabs->activateSubTab(self::TAB_VIEW_CONTENT);
+
+        $gui = $this->object->getLocalDI()["gui.learner"];
+
+        $this->ctrl->setCmd($cmd);
+        $this->ctrl->forwardCommand($gui);
+    }
+
+    protected function members()
+    {
+        $may_manage_members = $this->checkAccess("edit_members");
+        $this->ctrl->setCmdClass('ilLearningPathMembershipGUI');
+        if ($may_manage_members) {
+            $this->manage_members(self::CMD_MANAGE_MEMBERS);
+        } else {
+            $this->manage_members(self::CMD_MEMBERS_GALLERY);
+        }
+    }
+
+    protected function manage_members(string $cmd = self::CMD_MANAGE_MEMBERS)
+    {
+        $this->tabs->setTabActive(self::TAB_MEMBERS);
+
+        $ms_gui = new ilLearningPathMembershipGUI(
+            $this,
+            $this->getObject(),
+            $this->getTrackingObject(),
+            ilPrivacySettings::_getInstance(),
+            $this->lng,
+            $this->ctrl,
+            $this->access,
+            $this->rbac_review,
+            $this->settings,
+            $this->toolbar
+        );
+
+        $this->ctrl->setCmd($cmd);
+        $this->ctrl->forwardCommand($ms_gui);
+    }
+
+    protected function learningProgress(string $cmd = self::CMD_LP)
+    {
+        $this->tabs->setTabActive(self::TAB_LP);
+
+        $for_user = $this->user->getId();
+
+        if ($_GET['user_id']) {
+            $for_user = $_GET['user_id'];
+        }
+
+        $lp_gui = new ilLearningProgressGUI(
+            ilLearningProgressGUI::LP_CONTEXT_REPOSITORY,
+            $this->getObject()->getRefId(),
+            $for_user
+        );
+
+        if ($cmd === self::CMD_LP) {
+            $cmd = '';
+        }
+
+        $this->ctrl->setCmd($cmd);
+        $this->ctrl->forwardCommand($lp_gui);
+    }
+
+    protected function export()
+    {
+        $this->tabs->setTabActive(self::TAB_EXPORT);
+        $gui = new ilExportGUI($this);
+        $gui->addFormat("xml");
+
+        $this->ctrl->forwardCommand($gui);
+    }
+
+    protected function initDidacticTemplate(ilPropertyFormGUI $form)
+    {
+        return $form;
+    }
+
+    public function create()
+    {
+        parent::createObject();
+    }
+
+    public function save()
+    {
+        parent::saveObject();
+    }
+
+    public function unparticipate()
+    {
+        if ($this->checkAccess('unparticipate')) {
+            $usr_id = (int) $this->user->getId();
+            $this->getObject()->getLSRoles()->leave($usr_id);
+            $this->learnerView();
+        }
+    }
+
+    protected function removeMember(int $usr_id)
+    {
+        $this->ls_object->leave($usr_id);
+    }
+
 
 
     /**
@@ -162,13 +643,8 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
     /**
      *
      */
-    protected function manageContents() : void
-    {
-        self::dic()->tabs()->activateTab(self::TAB_CONTENTS);
 
-        // TODO: Implement manageContents
-        $this->show("");
-    }
+
 
 
     /**
@@ -176,96 +652,230 @@ class ilObjLearningPathGUI extends ilObjectPluginGUI
      */
     protected function setTabs() : void
     {
-        self::dic()->tabs()->addTab(self::TAB_SHOW_CONTENTS, self::plugin()->translate("show_contents", self::LANG_MODULE_OBJECT), self::dic()->ctrl()
-            ->getLinkTarget($this, self::CMD_SHOW_CONTENTS));
 
-        if (ilObjLearningPathAccess::hasWriteAccess()) {
-            self::dic()->tabs()->addTab(self::TAB_CONTENTS, self::plugin()->translate("manage_contents", self::LANG_MODULE_OBJECT), self::dic()
-                ->ctrl()->getLinkTarget($this, self::CMD_MANAGE_CONTENTS));
-
-            self::dic()->tabs()->addTab(self::TAB_SETTINGS, self::plugin()->translate("settings", self::LANG_MODULE_SETTINGS), self::dic()->ctrl()
-                ->getLinkTarget($this, self::CMD_SETTINGS));
+        if ($this->checkAccess("read")) {
+            $this->tabs->addTab(
+                self::TAB_CONTENT_MAIN,
+                $this->lng->txt(self::TAB_CONTENT_MAIN),
+                $this->ctrl->getLinkTarget($this, self::CMD_VIEW, "", false, false)
+            );
         }
 
-        if (ilObjLearningPathAccess::hasEditPermissionAccess()) {
-            self::dic()->tabs()->addTab(self::TAB_PERMISSIONS, self::plugin()->translate(self::TAB_PERMISSIONS, "", [], false), self::dic()->ctrl()
-                ->getLinkTargetByClass([
-                    self::class,
-                    ilPermissionGUI::class
-                ], self::CMD_PERMISSIONS));
+        if ($this->checkAccess("read") || $this->checkAccess("visible")) {
+            $this->tabs->addTab(
+                self::TAB_INFO,
+                $this->lng->txt(self::TAB_INFO),
+                $this->getLinkTarget(self::CMD_INFO)
+            );
         }
 
-        self::dic()->tabs()->manual_activation = true; // Show all tabs as links when no activation
+        if ($this->checkAccess("write")) {
+            $this->tabs->addTab(
+                self::TAB_SETTINGS,
+                $this->lng->txt(self::TAB_SETTINGS),
+                $this->getLinkTarget(self::CMD_SETTINGS)
+            );
+        }
+
+        if ($this->checkAccess("read")) {
+            if ($this->checkAccess("manage_members")
+                || (
+                    $this->getObject()->getLSSettings()->getMembersGallery()
+                    &&
+                    $this->getObject()->getLSRoles()->isMember((int) $this->user->getId())
+                )
+            ) {
+                $this->tabs->addTab(
+                    self::TAB_MEMBERS,
+                    $this->lng->txt(self::TAB_MEMBERS),
+                    $this->ctrl->getLinkTarget($this, self::CMD_MEMBERS, "", false, false)
+                );
+            }
+        }
+
+        if (ilObjUserTracking::_enabledLearningProgress() && $this->checkLPAccess()) {
+            $this->tabs->addTab(
+                self::TAB_LP,
+                $this->lng->txt(self::TAB_LP),
+                $this->getLinkTarget(self::CMD_LP)
+            );
+        }
+
+        if ($this->checkAccess("write")) {
+            $this->tabs->addTab(
+                self::TAB_EXPORT,
+                $this->lng->txt(self::TAB_EXPORT),
+                $this->ctrl->getLinkTargetByClass("ilexportgui", "")
+            );
+        }
+
+        if ($this->checkAccess("edit_permission")) {
+            $this->tabs->addTab(
+                self::TAB_PERMISSIONS,
+                $this->lng->txt(self::TAB_PERMISSIONS),
+                $this->getLinkTarget(self::CMD_PERMISSIONS)
+            );
+        }
     }
 
+    public function renderObject()
+    {
+        // disables this method in ilContainerGUI
+    }
+
+    protected function addSubTabsForContent()
+    {
+        $this->tabs->addSubTab(
+            self::TAB_VIEW_CONTENT,
+            $this->lng->txt(self::TAB_VIEW_CONTENT),
+            $this->getLinkTarget(self::CMD_LEARNER_VIEW)
+        );
+
+        if ($this->checkAccess("write")) {
+            $this->tabs->addSubTab(
+                self::TAB_MANAGE,
+                $this->lng->txt(self::TAB_MANAGE),
+                $this->getLinkTarget(self::CMD_CONTENT)
+            );
+        }
+    }
+
+    protected function checkAccess($which) : bool
+    {
+        return $this->access->checkAccess($which, "", $this->ref_id);
+    }
+
+    protected function checkLPAccess()
+    {
+        $ref_id = $this->getObject()->getRefId();
+        $is_participant = ilLearningPathParticipants::_isParticipant($ref_id, $this->user->getId());
+
+        $lp_access = ilLearningProgressAccess::checkAccess($ref_id, $is_participant);
+        $may_edit_lp_settings = $this->checkAccess('edit_learning_progress');
+
+        return ($lp_access || $may_edit_lp_settings);
+    }
+
+    protected function getLinkTarget(string $cmd) : string
+    {
+        $class = $this->getClassForTabs($cmd);
+        $class_path = [
+            strtolower('ilObjLearningPathGUI'),
+            $class
+        ];
+        return $this->ctrl->getLinkTargetByClass($class_path, $cmd);
+    }
+
+    protected function getClassForTabs(string $cmd) : string
+    {
+        switch ($cmd) {
+            case self::CMD_CONTENT:
+                return 'ilObjLearningPathContentGUI';
+            case self::CMD_LEARNER_VIEW:
+                return 'ilObjLearningPathLearnerGUI';
+            case self::CMD_SETTINGS:
+                return 'ilObjLearningPathSettingsGUI';
+            case self::CMD_INFO:
+                return 'ilInfoScreenGUI';
+            case self::CMD_PERMISSIONS:
+                return 'ilPermissionGUI';
+            case self::CMD_LP:
+                return 'ilLearningProgressGUI';
+        }
+
+        throw new InvalidArgumentException('cannot resolve class for command: ' . $cmd);
+    }
+
+    public function createMailSignature()
+    {
+        $link = chr(13) . chr(10) . chr(13) . chr(10);
+        $link .= $this->lng->txt('lso_mail_permanent_link');
+        $link .= chr(13) . chr(10) . chr(13) . chr(10);
+        $link .= ilLink::_getLink($this->object->getRefId());
+
+        return rawurlencode(base64_encode($link));
+    }
+
+    public function getObject()
+    {file_put_contents('console.log', print_r(var_export(reset($this->ref_id), true) . "\n", true), FILE_APPEND);
+        if ($this->object === null) {
+            $this->object = ilObjLearningPath::getInstanceByRefId($this->ref_id);
+        }
+
+        return $this->object;
+    }
+
+    protected function getTrackingObject() : ilObjUserTracking
+    {
+        return new ilObjUserTracking();
+    }
+
+    /**
+     * @return [role_id] => title
+     */
+    public function getLocalRoles() : array
+    {
+        $local_roles = $this->object->getLocalLearningPathRoles(false);
+        $lso_member = $this->object->getDefaultMemberRole();
+        $lso_roles = array();
+
+        if (in_array($lso_member, $local_roles)) {
+            $lso_roles[$lso_member] = ilObjRole::_getTranslation(array_search($lso_member, $local_roles));
+            unset($local_roles[$lso_roles[$lso_member]]);
+        }
+
+        foreach ($local_roles as $title => $role_id) {
+            $lso_roles[$role_id] = ilObjRole::_getTranslation($title);
+        }
+
+        return $lso_roles;
+    }
+
+    /**
+     * append additional types to ilRepositoryExplorerGUI's whitelist
+     */
+    protected function getAdditionalWhitelistTypes() : array
+    {
+        $types = array_filter(
+            array_keys($this->obj_definition->getSubObjects('lso', false)),
+            function ($type) {
+                return $type !== 'rolf';
+            }
+        );
+
+        return $types;
+    }
+
+    public function addCustomData($a_data)
+    {
+        $res_data = array();
+        foreach ($a_data as $usr_id => $user_data) {
+            $res_data[$usr_id] = $user_data;
+            $udf_data = new ilUserDefinedData($usr_id);
+
+            foreach ($udf_data->getAll() as $field => $value) {
+                list($f, $field_id) = explode('_', $field);
+                $res_data[$usr_id]['udf_' . $field_id] = (string) $value;
+            }
+        }
+
+        return $res_data;
+    }
 
     /**
      *
      */
-    protected function settings() : void
-    {
-        self::dic()->tabs()->activateTab(self::TAB_SETTINGS);
 
-        $form = self::learningPath()->objectSettings()->factory()->newFormBuilderInstance($this, $this->object);
-
-        self::output()->output($form);
-    }
-
-
-    /**
-     *
-     */
-    protected function settingsStore() : void
-    {
-        self::dic()->tabs()->activateTab(self::TAB_SETTINGS);
-
-        $form = self::learningPath()->objectSettings()->factory()->newFormBuilderInstance($this, $this->object);
-
-        if (!$form->storeForm()) {
-            self::output()->output($form);
-
-            return;
-        }
-
-        ilUtil::sendSuccess(self::plugin()->translate("saved", self::LANG_MODULE_SETTINGS), true);
-
-        self::dic()->ctrl()->redirect($this, self::CMD_SETTINGS);
-    }
 
 
     /**
      * @param string $html
      */
-    protected function show(string $html) : void
-    {
-        if (!self::dic()->ctrl()->isAsynch()) {
-            self::dic()->ui()->mainTemplate()->setTitle($this->object->getTitle());
 
-            self::dic()->ui()->mainTemplate()->setDescription($this->object->getDescription());
-
-            if (!$this->object->isOnline()) {
-                self::dic()->ui()->mainTemplate()->setAlertProperties([
-                    [
-                        "alert"    => true,
-                        "property" => self::plugin()->translate("status", self::LANG_MODULE_OBJECT),
-                        "value"    => self::plugin()->translate("offline", self::LANG_MODULE_OBJECT)
-                    ]
-                ]);
-            }
-        }
-
-        self::output()->output($html);
-    }
 
 
     /**
      *
      */
-    protected function showContents() : void
-    {
-        self::dic()->tabs()->activateTab(self::TAB_SHOW_CONTENTS);
 
-        // TODO: Implement showContents
-        $this->show("");
-    }
 }
