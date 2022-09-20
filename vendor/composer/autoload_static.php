@@ -66,7 +66,7 @@ class ComposerStaticInitfb29be0e93fb3648cb35006394fd24e9
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'ilLearningPathConfigGUI' => __DIR__ . '/../..' . '/classes/class.ilLearningPathConfigGUI.php',
+        'ilLearningPathConfigGUI' => __DIR__ . '/../..',
         'ilLearningPathPlugin' => __DIR__ . '/../..' . '/classes/class.ilLearningPathPlugin.php',
         'ilObjLearningPath' => __DIR__ . '/../..' . '/classes/class.ilObjLearningPath.php',
         'ilObjLearningPathAccess' => __DIR__ . '/../..' . '/classes/class.ilObjLearningPathAccess.php',
